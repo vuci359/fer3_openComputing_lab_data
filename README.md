@@ -23,3 +23,4 @@ Repository for files related to FER3 course 210657 Open Computing
   <li>music writers -> List of people who wrote music for the song</li>
 </ul>
 <p>Data sources: <br/> wikipedia.org <br/> azlyrics.com <br/> genius.com </p>
+<p>License: Creative Commons Zero v1.0 Universal</p>
