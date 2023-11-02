@@ -33,7 +33,7 @@ CREATE TABLE public."Album" (
 );
 
 
-ALTER TABLE public."Album" OWNER TO vuci359;
+ALTER TABLE public."Album" OWNER TO postgres;
 
 --
 -- Name: Album_ID_seq; Type: SEQUENCE; Schema: public; Owner: vuci359
@@ -48,7 +48,7 @@ CREATE SEQUENCE public."Album_ID_seq"
     CACHE 1;
 
 
-ALTER TABLE public."Album_ID_seq" OWNER TO vuci359;
+ALTER TABLE public."Album_ID_seq" OWNER TO postgres;
 
 --
 -- Name: Album_ID_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: vuci359
@@ -70,7 +70,7 @@ CREATE TABLE public."Band" (
 );
 
 
-ALTER TABLE public."Band" OWNER TO vuci359;
+ALTER TABLE public."Band" OWNER TO postgres;
 
 --
 -- Name: Band_ID_seq; Type: SEQUENCE; Schema: public; Owner: vuci359
@@ -85,7 +85,7 @@ CREATE SEQUENCE public."Band_ID_seq"
     CACHE 1;
 
 
-ALTER TABLE public."Band_ID_seq" OWNER TO vuci359;
+ALTER TABLE public."Band_ID_seq" OWNER TO postgres;
 
 --
 -- Name: Band_ID_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: vuci359
@@ -110,7 +110,7 @@ CREATE TABLE public."Song" (
 );
 
 
-ALTER TABLE public."Song" OWNER TO vuci359;
+ALTER TABLE public."Song" OWNER TO postgres;
 
 --
 -- Name: Song_ID_seq; Type: SEQUENCE; Schema: public; Owner: vuci359
@@ -125,7 +125,7 @@ CREATE SEQUENCE public."Song_ID_seq"
     CACHE 1;
 
 
-ALTER TABLE public."Song_ID_seq" OWNER TO vuci359;
+ALTER TABLE public."Song_ID_seq" OWNER TO postgres;
 
 --
 -- Name: Song_ID_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: vuci359

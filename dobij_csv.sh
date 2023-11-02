@@ -1,3 +1,4 @@
+#! /bin/bash
 docker exec -u postgres opencomputingLabDatabase psql -d or_lab_data -c "COPY(
 		select
 			 sng.name as \"song name\"
@@ -11,6 +12,7 @@ docker exec -u postgres opencomputingLabDatabase psql -d or_lab_data -c "COPY(
 			,sng.no_on_album as \"position on album\"
 			,unnest(sng.lyrics_writers) as \"lyrics writers\"
 			,unnest(sng.music_writers) as \"music writers\"
+			,sng.lyrics as \"lyrics\"
 			,sng.lyrics as \"lyrics\"
 
 		from \"Band\" as bnd
