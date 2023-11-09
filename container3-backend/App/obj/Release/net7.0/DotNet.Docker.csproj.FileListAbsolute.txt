@@ -1,0 +1,15 @@
+/home/majmun/Dokumenti/FER/or/fer3_openComputing_lab_data/container3-backend/App/bin/Release/net7.0/DotNet.Docker
+/home/majmun/Dokumenti/FER/or/fer3_openComputing_lab_data/container3-backend/App/bin/Release/net7.0/DotNet.Docker.deps.json
+/home/majmun/Dokumenti/FER/or/fer3_openComputing_lab_data/container3-backend/App/bin/Release/net7.0/DotNet.Docker.runtimeconfig.json
+/home/majmun/Dokumenti/FER/or/fer3_openComputing_lab_data/container3-backend/App/bin/Release/net7.0/DotNet.Docker.dll
+/home/majmun/Dokumenti/FER/or/fer3_openComputing_lab_data/container3-backend/App/bin/Release/net7.0/DotNet.Docker.pdb
+/home/majmun/Dokumenti/FER/or/fer3_openComputing_lab_data/container3-backend/App/obj/Release/net7.0/DotNet.Docker.csproj.AssemblyReference.cache
+/home/majmun/Dokumenti/FER/or/fer3_openComputing_lab_data/container3-backend/App/obj/Release/net7.0/DotNet.Docker.GeneratedMSBuildEditorConfig.editorconfig
+/home/majmun/Dokumenti/FER/or/fer3_openComputing_lab_data/container3-backend/App/obj/Release/net7.0/DotNet.Docker.AssemblyInfoInputs.cache
+/home/majmun/Dokumenti/FER/or/fer3_openComputing_lab_data/container3-backend/App/obj/Release/net7.0/DotNet.Docker.AssemblyInfo.cs
+/home/majmun/Dokumenti/FER/or/fer3_openComputing_lab_data/container3-backend/App/obj/Release/net7.0/DotNet.Docker.csproj.CoreCompileInputs.cache
+/home/majmun/Dokumenti/FER/or/fer3_openComputing_lab_data/container3-backend/App/obj/Release/net7.0/DotNet.Docker.dll
+/home/majmun/Dokumenti/FER/or/fer3_openComputing_lab_data/container3-backend/App/obj/Release/net7.0/refint/DotNet.Docker.dll
+/home/majmun/Dokumenti/FER/or/fer3_openComputing_lab_data/container3-backend/App/obj/Release/net7.0/DotNet.Docker.pdb
+/home/majmun/Dokumenti/FER/or/fer3_openComputing_lab_data/container3-backend/App/obj/Release/net7.0/DotNet.Docker.genruntimeconfig.cache
+/home/majmun/Dokumenti/FER/or/fer3_openComputing_lab_data/container3-backend/App/obj/Release/net7.0/ref/DotNet.Docker.dll

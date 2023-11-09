@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yEAbnU9icc/RjBjdhdsmFgAPDA682919tRv0GkApdbuZoK2M2p1zea4AJRgpJsvUp1iwwPWFtv6hUkvKe3pSWA==",
+  "dgSpecHash": "5ZCl0/+mukB0X8VJPXRx/cUz4D5Q99LzrFlPzGPGMrd/NamZ5Uvkqsukz/yZd3tF9IA30oiAdhCgGKOTyCGRpQ==",
   "success": true,
-  "projectFilePath": "/home/majmun/Dokumenti/FER/or/fer3_openComputing_lab_data/App/DotNet.Docker.csproj",
+  "projectFilePath": "/home/majmun/Dokumenti/FER/or/fer3_openComputing_lab_data/container3-backend/App/DotNet.Docker.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
