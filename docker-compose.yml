@@ -2,12 +2,14 @@ version: '3.1'
 
 services:
  openComputingLabFrontend:
-  image: 'vuci359/fer3_opencomputing_lab_exam:frontend'
+  image: 'vuci359/fer3_opencomputing_lab_exam:frontend_v1'
+  container_name: opencomputingLabFrontend
   ports:
    - "80:80"
 
  opencomputingLabBackend:
-  image: 'vuci359/fer3_opencomputing_lab_exam:backend'
+  image: 'vuci359/fer3_opencomputing_lab_exam:backend_v1'
+  container_name: opencomputingLabBackend
   ports: 
    - "8087:8080"
   depends_on:
@@ -17,7 +19,7 @@ services:
    - ASPNETCORE_URLS=http://+:8000
  
  opencomputingLabDatabase:
-  image: 'vuci359/fer3_opencomputing_lab_exam:baza'
+  image: 'vuci359/fer3_opencomputing_lab_exam:database_v1'
   container_name: opencomputingLabDatabase
   environment:
    - POSTGRES_USER=postgres
@@ -25,7 +27,7 @@ services:
   ports:
    - "5435:5432"
   healthcheck:
-   test: ["CMD_SHELL", "pg_isready -U postgres"]
+   test: ["CMD-SHELL", "pg_isready -U postgres"]
    interval: 5s
    timeout: 5s
    retries: 5

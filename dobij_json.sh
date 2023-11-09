@@ -13,6 +13,7 @@ docker exec -u postgres opencomputingLabDatabase psql -d or_lab_data -c "COPY(
 			,sng.no_on_album as \"position on album\"
 			,sng.lyrics_writers as \"lyrics writers\"
 			,sng.music_writers as \"music writers\"
+			,sng.lyrics as \"lyrics\"
 		from \"Band\" as bnd
 		join \"Album\" as alb on bnd.ident = alb.band_ident
 		join \"Song\" as sng on alb.ident = sng.album_ident
