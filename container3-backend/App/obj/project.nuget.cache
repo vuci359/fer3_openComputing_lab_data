@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "fX+lYEzbCiaXi1z/iqDbYiJSsF2vx4nqpZFRz3Aewd4tb8zktqEpk6z7REP2ce6kQvOq3OkroRLPsVCCYPpQBw==",
+  "dgSpecHash": "XubSEP9sRnyumRBz6cwPc18rUMGu95PKtvqU9LPMfUiQCx0L9gn+YYxvViHg1yJ5R0vyDptuXPvLyT9SLC1CjQ==",
   "success": true,
   "projectFilePath": "/home/majmun/Dokumenti/FER/or/fer3_openComputing_lab_data/container3-backend/App/DotNet.Docker.csproj",
   "expectedPackageFiles": [
@@ -23,6 +23,7 @@
     "/home/majmun/.nuget/packages/microsoft.extensions.options/7.0.0/microsoft.extensions.options.7.0.0.nupkg.sha512",
     "/home/majmun/.nuget/packages/microsoft.extensions.primitives/7.0.0/microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "/home/majmun/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/home/majmun/.nuget/packages/microsoft.win32.systemevents/7.0.0/microsoft.win32.systemevents.7.0.0.nupkg.sha512",
     "/home/majmun/.nuget/packages/mono.texttemplating/2.2.1/mono.texttemplating.2.2.1.nupkg.sha512",
     "/home/majmun/.nuget/packages/npgsql/7.0.6/npgsql.7.0.6.nupkg.sha512",
     "/home/majmun/.nuget/packages/npgsql.entityframeworkcore.postgresql/7.0.11/npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512",
@@ -31,8 +32,14 @@
     "/home/majmun/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.2.3/swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
     "/home/majmun/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.2.3/swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
     "/home/majmun/.nuget/packages/system.codedom/4.4.0/system.codedom.4.4.0.nupkg.sha512",
+    "/home/majmun/.nuget/packages/system.configuration.configurationmanager/7.0.0/system.configuration.configurationmanager.7.0.0.nupkg.sha512",
+    "/home/majmun/.nuget/packages/system.diagnostics.eventlog/7.0.0/system.diagnostics.eventlog.7.0.0.nupkg.sha512",
+    "/home/majmun/.nuget/packages/system.drawing.common/7.0.0/system.drawing.common.7.0.0.nupkg.sha512",
+    "/home/majmun/.nuget/packages/system.security.cryptography.protecteddata/7.0.0/system.security.cryptography.protecteddata.7.0.0.nupkg.sha512",
+    "/home/majmun/.nuget/packages/system.security.permissions/7.0.0/system.security.permissions.7.0.0.nupkg.sha512",
     "/home/majmun/.nuget/packages/system.text.encodings.web/7.0.0/system.text.encodings.web.7.0.0.nupkg.sha512",
-    "/home/majmun/.nuget/packages/system.text.json/7.0.0/system.text.json.7.0.0.nupkg.sha512"
+    "/home/majmun/.nuget/packages/system.text.json/7.0.0/system.text.json.7.0.0.nupkg.sha512",
+    "/home/majmun/.nuget/packages/system.windows.extensions/7.0.0/system.windows.extensions.7.0.0.nupkg.sha512"
   ],
   "logs": []
 }

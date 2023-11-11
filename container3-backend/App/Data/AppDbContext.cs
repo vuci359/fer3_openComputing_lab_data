@@ -11,4 +11,5 @@ public class AppDbContext : DbContext
     public DbSet<Band> Bands { get; set; }
     public DbSet<Album> Albums { get; set; }
     public DbSet<Song> Songs { get; set; }
+
 }
