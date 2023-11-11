@@ -12,6 +12,7 @@ services:
   container_name: opencomputingLabBackend
   ports: 
    - "8087:8080"
+   - "8000:8000"
   depends_on:
     opencomputingLabDatabase:
       condition: service_healthy

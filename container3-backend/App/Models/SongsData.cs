@@ -1,10 +1,12 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace openComputingLab.Models;
 
-//[Table("Band")]
+//[Table("SongsData")]
+[Keyless]
 public class SongsData {
     [Required]
     [Column("song name")]
