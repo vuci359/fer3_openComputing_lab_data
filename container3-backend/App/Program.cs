@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 using openComputingLab.Data;
+using openComputingLab.Controllers;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -15,8 +17,7 @@ builder.Services.AddDbContext <AppDbContext> (o => o.UseNpgsql(builder.Configura
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+if (app.Environment.IsDevelopment()){
     app.UseSwagger();
     app.UseSwaggerUI();
 }
