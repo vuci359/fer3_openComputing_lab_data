@@ -50,3 +50,5 @@
 /home/majmun/Dokumenti/FER/or/fer3_openComputing_lab_data/container3-backend/App/obj/Debug/net7.0/DotNet.Docker.genruntimeconfig.cache
 /home/majmun/Dokumenti/FER/or/fer3_openComputing_lab_data/container3-backend/App/obj/Debug/net7.0/ref/DotNet.Docker.dll
 /home/majmun/Dokumenti/FER/or/fer3_openComputing_lab_data/container3-backend/App/bin/Debug/net7.0/appsettings.Development.json
+/home/majmun/Dokumenti/FER/or/fer3_openComputing_lab_data/container3-backend/App/bin/Debug/net7.0/Newtonsoft.Json.dll
+/home/majmun/Dokumenti/FER/or/fer3_openComputing_lab_data/container3-backend/App/bin/Debug/net7.0/Json.Net.dll

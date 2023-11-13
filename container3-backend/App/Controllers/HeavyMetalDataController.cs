@@ -1,19 +1,23 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Configuration;
-
-using openComputingLab.Models;
+using System.Text.RegularExpressions;
+using System.Net.Http;
 using openComputingLab.Data;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Npgsql;
-using System.Data;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using System.Net.Sockets;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using System.Text.Unicode;
+using System.Text;
+using System.Text.Json.Nodes;
+
+//using Newtonsoft.Json;
 
 namespace openComputingLab.Controllers;
 
 [ApiController]
 [Route("api/[controller]/[action]")]
+[Produces("application/json")]
+
 public class HeavyMetalDataController : ControllerBase
 {
     private readonly AppDbContext _dbContext;
@@ -23,8 +27,8 @@ public class HeavyMetalDataController : ControllerBase
         _dbContext = dbContext;
     }
     [HttpGet]
-    [ActionName("GetUnfilteredData")]
-    public IActionResult GetData(string stupac = "*", string parameter = "*"){
+    [ActionName("GetData")]
+    public IActionResult GetData(string ? stupac = null, string ? parameter = null){
 
 		IDictionary<string, string> stupci = new Dictionary<string, string>
         {
@@ -62,18 +66,22 @@ public class HeavyMetalDataController : ControllerBase
 		";
 
 		string sql_where_clause = "";
-		if(stupac.Equals("*")){
+		if(stupac is null || parameter is null){
 			sql_where_clause = "";
-		}/*else if(stupac.Equals("album release date")){
-			sql_where_clause = @"where "+stupci[stupac]+ " like '"+parameter;
-		}*/else if(stupac.Equals("song length") || stupac.Equals("position on album")){
-			sql_where_clause = @"where "+stupci[stupac]+ " like "+parameter;
-		}/*else if(stupac.Equals("band members") || stupac.Equals("lyrics writers") || stupac.Equals("music writers")){
-			sql_where_clause = @"where lower("+parameter+") in (select (UNNEST("+stupci[stupac]+")) where)";
-		}*/else if(stupac.Equals("band members") || stupac.Equals("lyrics writers") || stupac.Equals("music writers")){
-			sql_where_clause = @"where '"+parameter+ "' = ANY("+stupci[stupac]+")";
 		}else{
-			sql_where_clause = @"where LOWER("+stupci[stupac]+ ") like LOWER('%"+parameter+"%')";
+			if(stupac.Equals("*") || parameter.Equals("*")){
+				sql_where_clause = "";
+			}/*else if(stupac.Equals("album release date")){
+				sql_where_clause = @"where "+stupci[stupac]+ " like '"+parameter;
+			}*/else if(stupac.Equals("song length") || stupac.Equals("position on album")){
+				sql_where_clause = @"where "+stupci[stupac]+ " like "+parameter;
+			}/*else if(stupac.Equals("band members") || stupac.Equals("lyrics writers") || stupac.Equals("music writers")){
+				sql_where_clause = @"where lower("+parameter+") in (select (UNNEST("+stupci[stupac]+")) where)";
+			}*/else if(stupac.Equals("band members") || stupac.Equals("lyrics writers") || stupac.Equals("music writers")){
+				sql_where_clause = @"where '"+parameter+ "' = ANY("+stupci[stupac]+")";
+			}else{
+				sql_where_clause = @"where LOWER("+stupci[stupac]+ ") like LOWER('%"+parameter+"%')";
+			}
 		}
 		
 		
@@ -92,19 +100,25 @@ public class HeavyMetalDataController : ControllerBase
  
           // Execute the query and obtain the value of the first column of the first row
           NpgsqlDataReader dr = command.ExecuteReader();
-		string ? output = "";
+		string  output = "null";
          // Output rows
          while (dr.Read())
 		 	if(dr[0] is System.DBNull){
-				output = "";
+				output = "null";
 			}else {
-				output = (string)dr[0];
+				//output = Regex.Unescape("{"+(string)dr[0]+"}").Replace('\"','"');
+				output = "{\"data:\":"+(string)dr[0]+"}";
+				//Console.WriteLine(JsonValue.Parse(output));
 			}
 			
 			Console.WriteLine("sss");
          
 		 conn.Close();
-		 return Ok(output);
+			//HttpResponse response = new H;
+			//response.content = new StringContent(output, Encoding.UTF8, "application/json");
+			return Ok(JsonValue.Parse(output));
+		 
+	//	 return Ok(JsonConvert.SerializeObject("{"+output+"}"));
 
 			//Console.WriteLine(output);
 		}

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8"/>
-    <link rel="stylesheet" href="/DataTables/datatables.css" />
-    <script src="/DataTables/datatables.js"></script>
+    <link rel="stylesheet" href="./jquery.dataTables.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="./jquery.dataTables.min.js"></script>
 </head>
 <body>
     <h1>Datatable</h1>
@@ -38,88 +39,86 @@
 
 
 <script>
-//dodavanje jednog redka u tablicu
-function addNewRow() {
-    table.row
-        .add([
-            counter + '.1',
-            counter + '.2',
-            counter + '.3',
-            counter + '.4',
-            counter + '.5'
-        ])
-        .draw(false);
- 
-    counter++;
-}
- 
-const table = new DataTable('#example');
-let counter = 1;
- 
-document.querySelector('#addRow').addEventListener('click', addNewRow);
- 
-// Automatically add a first row of data
-addNewRow();
-
+var json_data = null;
 
 
 //punjenje tablice
-$('#example').dataTable( {
-    "data": [
-        {
-            "name":       "Tiger Nixon",
-            "position":   "System Architect",
-            "salary":     "$3,120",
-            "start_date": "2011/04/25",
-            "office":     "Edinburgh",
-            "extn":       5421
-        },
-        {
-            "name": "Garrett Winters",
-            "position": "Director",
-            "salary": "5300",
-            "start_date": "2011/07/25",
-            "office": "Edinburgh",
-            "extn": "8422"
-        },
-        // ...
-    ],
-    "columns": [
-        { "data": "name" },
-        { "data": "position" },
-        { "data": "office" },
-        { "data": "extn" },
-        { "data": "start_date" },
-        { "data": "salary" }
-    ]
-} );
+function fill_table(){
+    //učitavanje podataka
+    getData();
+    //punjenje tablice
+    $('#example').dataTable( {
+        "data": json_data,
+        "columns": [
+            { "data": "song name" },
+            { "data": "band name" },
+            { "data": "band members" },
+            { "data": "genre" },
+            { "data": "album name" },
+            { "data": "album label" },
+            { "data": "album release date" },
+            { "data": "song length" },
+            { "data": "position on album" },
+            { "data": "lyrics writers" },
+            { "data": "music writers" },
+            { "data": "lyrics" }
+        ]
+    } );
+}
 
 
 //filtriranje
-var table2 = $('#example').DataTable();
+//var table2 = $('#example').DataTable();
  
-table.columns().flatten().each( function ( colIdx ) {
+//table.columns().flatten().each( function ( colIdx ) {
     // Create the select list and search operation
-    var select = $('<select />')
-        .appendTo(
-            table2.column(colIdx).footer()
-        )
-        .on( 'change', function () {
-            table2
-                .column( colIdx )
-                .search( $(this).val() )
-                .draw();
-        } );
+  //  var select = $('<select />')
+ //       .appendTo(
+ //           table2.column(colIdx).footer()
+  //      )
+ //       .on( 'change', function () {
+  //          table2
+  //              .column( colIdx )
+ //               .search( $(this).val() )
+ //               .draw();
+ //       } );
  
     // Get the search data for the first column and add to the select list
-    table2
-        .column( colIdx )
-        .cache( 'search' )
-        .sort()
-        .unique()
-        .each( function ( d ) {
-            select.append( $('<option value="'+d+'">'+d+'</option>') );
-        } );
-} );
+ //   table2
+ //       .column( colIdx )
+  //      .cache( 'search' )
+ //       .sort()
+  //      .unique()
+ //       .each( function ( d ) {
+ //           select.append( $('<option value="'+d+'">'+d+'</option>') );
+ //       } );
+
+
+// output: {"success":"true"}
+function getData(){
+      
+         return fetch('http://localhost:5000' + '/api/HeavyMetalData/GetData',{
+            method: 'GET',
+            mode:'cors',
+            data: jQuery.param({stupac:"*", parameter:"*"}),
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
+        }).then(response => {
+             if (response.status >= 200 && response.status < 300) {
+                console.log("aaa");
+                console.log(response.body);
+                console.log("bbb");
+                return response;
+            } else {
+                console.log('Something happened wrong');
+                console.log(response.body);
+               }
+         }).then(res => res.json()).then(data => {
+                console.log("zzz");
+                console.log(data);
+                json_data = data;
+         }).catch(err => err);
+}
+        
+
 
 </script>
