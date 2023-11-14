@@ -1,0 +1,176 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "./heavy_metal_songs_data.json",
+    "type": "object",
+    "default": {},
+    "title": "Root Schema",
+    "required": [
+        "song name",
+        "band name",
+        "band members",
+        "genre",
+        "album name",
+        "album label",
+        "album release date",
+        "song length",
+        "position on album",
+        "lyrics writers",
+        "music writers",
+        "lyrics"
+    ],
+    "properties": {
+        "song name": {
+            "type": "string",
+            "default": "",
+            "title": "The song name Schema",
+            "examples": [
+                "Bomber"
+            ]
+        },
+        "band name": {
+            "type": "string",
+            "default": "",
+            "title": "The band name Schema",
+            "examples": [
+                "Motorhead"
+            ]
+        },
+        "band members": {
+            "type": "array",
+            "default": [],
+            "title": "The band members Schema",
+            "items": {
+                "type": "string",
+                "title": "A Schema",
+                "examples": [
+                    "Lemmy Kilmister",
+                    "Phil Campbell",
+                    "Mikkey Dee"
+                ]
+            },
+            "examples": [
+                ["Lemmy Kilmister",
+                    "Phil Campbell",
+                    "Mikkey Dee"
+                ]
+            ]
+        },
+        "genre": {
+            "type": "string",
+            "default": "",
+            "title": "The genre Schema",
+            "examples": [
+                "Rock 'N' Roll"
+            ]
+        },
+        "album name": {
+            "type": "string",
+            "default": "",
+            "title": "The album name Schema",
+            "examples": [
+                "Bomber"
+            ]
+        },
+        "album label": {
+            "type": "string",
+            "default": "",
+            "title": "The album label Schema",
+            "examples": [
+                "Bronze Records"
+            ]
+        },
+        "album release date": {
+            "type": "string",
+            "default": "",
+            "title": "The album release date Schema",
+            "examples": [
+                "1979-10-12"
+            ]
+        },
+        "song length": {
+            "type": "string",
+            "default": "",
+            "title": "The song length Schema",
+            "examples": [
+                "03:43:00"
+            ]
+        },
+        "position on album": {
+            "type": "integer",
+            "default": 0,
+            "title": "The position on album Schema",
+            "examples": [
+                10
+            ]
+        },
+        "lyrics writers": {
+            "type": "array",
+            "default": [],
+            "title": "The lyrics writers Schema",
+            "items": {
+                "type": "string",
+                "default": "",
+                "title": "A Schema",
+                "examples": [
+                    "Lemmy Kilmister"
+                ]
+            },
+            "examples": [
+                [
+                    "Lemmy Kilmister"]
+            ]
+        },
+        "music writers": {
+            "type": "array",
+            "default": [],
+            "title": "The music writers Schema",
+            "items": {
+                "type": "string",
+                "title": "A Schema",
+                "examples": [
+                    "Lemmy Kilmister",
+                    "Eddie Clarke",
+                    "Phil Taylor"
+                ]
+            },
+            "examples": [
+                ["Lemmy Kilmister",
+                    "Eddie Clarke",
+                    "Phil Taylor"
+                ]
+            ]
+        },
+        "lyrics": {
+            "type": "string",
+            "default": "",
+            "title": "The lyrics Schema",
+            "examples": [
+                "\\Bomber\\\\n\\nAin't a hope in hell\\nNothin' gonna bring us down\\nThe way we fly\\nFive miles off the ground\\nBecause, we shoot to kill\\nAnd you know we always will\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber\\n\\nScream a thousand miles\\nFeel the black death rising moan\\nFirestorm coming closer\\nNapalm to the bone\\nBecause, you know we do it right\\nA mission every night\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber\\n\\nNo nightfighter\\nGonna stop us getting through\\nSirens make you shiver\\nYou bet my aim is true\\nBecause, we aim to please\\nBring you to your knees\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber "
+            ]
+        }
+    },
+    "examples": [{
+        "song name": "Bomber",
+        "band name": "Motorhead",
+        "band members": [
+            "Lemmy Kilmister",
+            "Phil Campbell",
+            "Mikkey Dee"
+        ],
+        "genre": "Rock 'N' Roll",
+        "album name": "Bomber",
+        "album label": "Bronze Records",
+        "album release date": "1979-10-12",
+        "song length": "03:43:00",
+        "position on album": 10,
+        "lyrics writers": [
+            "Lemmy Kilmister"
+        ],
+        "music writers": [
+            "Lemmy Kilmister",
+            "Eddie Clarke",
+            "Phil Taylor"
+        ],
+        "lyrics": "\\Bomber\\\\n\\nAin't a hope in hell\\nNothin' gonna bring us down\\nThe way we fly\\nFive miles off the ground\\nBecause, we shoot to kill\\nAnd you know we always will\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber\\n\\nScream a thousand miles\\nFeel the black death rising moan\\nFirestorm coming closer\\nNapalm to the bone\\nBecause, you know we do it right\\nA mission every night\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber\\n\\nNo nightfighter\\nGonna stop us getting through\\nSirens make you shiver\\nYou bet my aim is true\\nBecause, we aim to please\\nBring you to your knees\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber "
+    }]
+}
