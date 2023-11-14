@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using System.Text.Unicode;
 using System.Text;
 using System.Text.Json.Nodes;
+using Microsoft.AspNetCore.Cors;
 
 //using Newtonsoft.Json;
 
@@ -17,6 +18,7 @@ namespace openComputingLab.Controllers;
 [ApiController]
 [Route("api/[controller]/[action]")]
 [Produces("application/json")]
+[EnableCors]
 
 public class HeavyMetalDataController : ControllerBase
 {
@@ -92,7 +94,7 @@ public class HeavyMetalDataController : ControllerBase
 
 		try{
 			// Connect to a PostgreSQL database
-          NpgsqlConnection conn = new NpgsqlConnection("Server=127.0.0.1;Database=opencomputing_lab_data;Port=5432;User Id=postgres;Password=fpD5gXw&B;Integrated Security=true;Pooling=true;");
+          NpgsqlConnection conn = new NpgsqlConnection("Server=opencomputingLabDatabase;Database=or_lab_data;Port=5432;User Id=postgres;Password=r/)&kjnkeVNSEHUE83;Integrated Security=true;Pooling=true;");
           conn.Open();
  
           // Define a query returning a single row result set
@@ -107,7 +109,7 @@ public class HeavyMetalDataController : ControllerBase
 				output = "null";
 			}else {
 				//output = Regex.Unescape("{"+(string)dr[0]+"}").Replace('\"','"');
-				output = "{\"data:\":"+(string)dr[0]+"}";
+				output = "{\"podaci\":"+(string)dr[0]+"}";
 				//Console.WriteLine(JsonValue.Parse(output));
 			}
 			

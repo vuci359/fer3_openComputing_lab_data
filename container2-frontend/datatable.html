@@ -28,10 +28,30 @@
             <tr>
                 <td>Row 1 Data 1</td>
                 <td>Row 1 Data 2</td>
+                <td>Row 1 Data 3</td>
+                <td>Row 1 Data 4</td>
+                <td>Row 1 Data 5</td>
+                <td>Row 1 Data 6</td>
+                <td>Row 1 Data 7</td>
+                <td>Row 1 Data 8</td>
+                <td>Row 1 Data 9</td>
+                <td>Row 1 Data 10</td>
+                <td>Row 1 Data 11</td>
+                <td>Row 1 Data 12</td>
             </tr>
             <tr>
                 <td>Row 2 Data 1</td>
                 <td>Row 2 Data 2</td>
+                <td>Row 2 Data 3</td>
+                <td>Row 2 Data 4</td>
+                <td>Row 2 Data 5</td>
+                <td>Row 2 Data 6</td>
+                <td>Row 2 Data 7</td>
+                <td>Row 2 Data 8</td>
+                <td>Row 2 Data 9</td>
+                <td>Row 2 Data 10</td>
+                <td>Row 2 Data 11</td>
+                <td>Row 2 Data 12</td>
             </tr>
         </tbody>
     </table>
@@ -46,9 +66,12 @@ var json_data = null;
 function fill_table(){
     //učitavanje podataka
     getData();
+   // var dataArray = Array();
+   // dataArray.push(json_data.podaci);
+   // console.log(json_data);
     //punjenje tablice
-    $('#example').dataTable( {
-        "data": json_data,
+    $('#musicData').dataTable( {
+        "data": json_data.podaci,
         "columns": [
             { "data": "song name" },
             { "data": "band name" },
@@ -97,28 +120,37 @@ function fill_table(){
 // output: {"success":"true"}
 function getData(){
       
-         return fetch('http://localhost:5000' + '/api/HeavyMetalData/GetData',{
+         return fetch('http://localhost:8087' + '/api/HeavyMetalData/GetData',{
             method: 'GET',
             mode:'cors',
+            headers:{
+                'Access-Control-Allow-Origin': 'true',
+                'Sec-Fetch-Mode': 'cors'
+            },
             data: jQuery.param({stupac:"*", parameter:"*"}),
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
         }).then(response => {
              if (response.status >= 200 && response.status < 300) {
-                console.log("aaa");
+               // console.log("aaa");
                 console.log(response.body);
-                console.log("bbb");
+              //  console.log("bbb");
                 return response;
             } else {
                 console.log('Something happened wrong');
                 console.log(response.body);
                }
          }).then(res => res.json()).then(data => {
-                console.log("zzz");
-                console.log(data);
+              //  console.log("zzz");
+               //console.log(data);
                 json_data = data;
          }).catch(err => err);
 }
         
-
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  next();
+})
 
 </script>
