@@ -12,6 +12,37 @@
 </head>
 <body>
     <h1>Datatable</h1>
+    <table class="inputs"><tbody>
+        <tr>
+            <td>Polje za pretragu</td>
+            <td><input type="text" Value="Unesite vrijednost" id="pretraga" name="pretraga"></td>
+        </tr>
+        <tr>
+            <td>
+                <label for="atribut">Odaberite polje za pretragu:</label>
+            <select id="atribut" name="atrinut">
+              <option value=0>song name</option>
+              <option value=1>band name</option>
+              <option value=2>band members</option>
+              <option value=3>genre</option>
+              <option value=4>album name</option>
+              <option value=5>album label</option>
+              <option value=6>album release date</option>
+              <option value=7>song length</option>
+              <option value=8>position on album</option>
+              <option value=9>lyrics writers</option>
+              <option value=10>music writers</option>
+              <option value=11>lyrics</option>
+              <option value=12>*</option>
+            </select>
+            </td>
+        </tr>
+        ><tr>
+            <td>
+                <input type="submit" id="gumb" value="Submit">
+            </td>
+        </tr>
+    </tbody></table>
     <table id="tablica" class="display">
         <thead>
             <tr>
@@ -90,8 +121,28 @@ async function fill_table(){
     data_table.rows.add(json_data.podaci).draw();
 }
 
+const search_term = document.querySelector("#pretraga");
+const search_category = document.querySelector("#atribut");
 
-
+$('#gumb').on('click', function () {
+    console.log(search_category.value);
+    console.log(search_term.value);
+    data_table.clear();
+    data_table.rows.add(json_data.podaci).draw()
+    if(search_term.value != "*"){    
+        if(search_category.value == 12){
+            data_table
+            .search(search_term.value)
+            .draw();
+        }
+        else{
+            data_table
+            .column(search_category.value)
+            .search(search_term.value)
+            .draw();
+        }
+    }
+} );
 
 // output: {"success":"true"}
 async function getData(){
