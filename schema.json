@@ -1,176 +1,315 @@
 {
     "$schema": "https://json-schema.org/draft/2019-09/schema",
-    "$id": "./heavy_metal_songs_data.json",
+    "$id": "./schema.json",
     "type": "object",
     "default": {},
     "title": "Root Schema",
     "required": [
-        "song name",
-        "band name",
-        "band members",
-        "genre",
-        "album name",
-        "album label",
-        "album release date",
-        "song length",
-        "position on album",
-        "lyrics writers",
-        "music writers",
-        "lyrics"
+        "podaci"
     ],
     "properties": {
-        "song name": {
-            "type": "string",
-            "default": "",
-            "title": "The song name Schema",
-            "examples": [
-                "Bomber"
-            ]
-        },
-        "band name": {
-            "type": "string",
-            "default": "",
-            "title": "The band name Schema",
-            "examples": [
-                "Motorhead"
-            ]
-        },
-        "band members": {
+        "podaci": {
             "type": "array",
             "default": [],
-            "title": "The band members Schema",
+            "title": "The podaci Schema",
             "items": {
-                "type": "string",
+                "type": "object",
                 "title": "A Schema",
-                "examples": [
-                    "Lemmy Kilmister",
-                    "Phil Campbell",
-                    "Mikkey Dee"
-                ]
+                "required": [
+                    "song name",
+                    "band name",
+                    "band members",
+                    "genre",
+                    "album name",
+                    "album label",
+                    "album release date",
+                    "song length",
+                    "position on album",
+                    "lyrics writers",
+                    "music writers",
+                    "lyrics"
+                ],
+                "properties": {
+                    "song name": {
+                        "type": "string",
+                        "title": "The song name Schema",
+                        "examples": [
+                            "Bomber",
+                            "Dead Men Tell No Tales"
+                        ]
+                    },
+                    "band name": {
+                        "type": "string",
+                        "title": "The band name Schema",
+                        "examples": [
+                            "Motorhead"
+                        ]
+                    },
+                    "band members": {
+                        "type": "array",
+                        "title": "The band members Schema",
+                        "items": {
+                            "type": "string",
+                            "title": "A Schema",
+                            "examples": [
+                                "Lemmy Kilmister",
+                                "Phil Campbell",
+                                "Mikkey Dee"
+                            ]
+                        },
+                        "examples": [
+                            ["Lemmy Kilmister",
+                                "Phil Campbell",
+                                "Mikkey Dee"
+                            ],
+                            ["Lemmy Kilmister",
+                                "Phil Campbell",
+                                "Mikkey Dee"
+                            ]
+                        ]
+                    },
+                    "genre": {
+                        "type": "string",
+                        "title": "The genre Schema",
+                        "examples": [
+                            "Rock 'N' Roll"
+                        ]
+                    },
+                    "album name": {
+                        "type": "string",
+                        "title": "The album name Schema",
+                        "examples": [
+                            "Bomber"
+                        ]
+                    },
+                    "album label": {
+                        "type": "string",
+                        "title": "The album label Schema",
+                        "examples": [
+                            "Bronze Records"
+                        ]
+                    },
+                    "album release date": {
+                        "type": "string",
+                        "title": "The album release date Schema",
+                        "examples": [
+                            "1979-10-12"
+                        ]
+                    },
+                    "song length": {
+                        "type": "string",
+                        "title": "The song length Schema",
+                        "examples": [
+                            "03:43:00",
+                            "03:07:00"
+                        ]
+                    },
+                    "position on album": {
+                        "type": "integer",
+                        "title": "The position on album Schema",
+                        "examples": [
+                            10,
+                            1
+                        ]
+                    },
+                    "lyrics writers": {
+                        "type": "array",
+                        "title": "The lyrics writers Schema",
+                        "items": {
+                            "type": "string",
+                            "title": "A Schema",
+                            "examples": [
+                                "Lemmy Kilmister"
+                            ]
+                        },
+                        "examples": [
+                            [
+                                "Lemmy Kilmister"],
+                            [
+                                "Lemmy Kilmister"]
+                        ]
+                    },
+                    "music writers": {
+                        "type": "array",
+                        "title": "The music writers Schema",
+                        "items": {
+                            "type": "string",
+                            "title": "A Schema",
+                            "examples": [
+                                "Lemmy Kilmister",
+                                "Eddie Clarke",
+                                "Phil Taylor"
+                            ]
+                        },
+                        "examples": [
+                            ["Lemmy Kilmister",
+                                "Eddie Clarke",
+                                "Phil Taylor"
+                            ],
+                            ["Lemmy Kilmister",
+                                "Eddie Clarke",
+                                "Phil Taylor"
+                            ]
+                        ]
+                    },
+                    "lyrics": {
+                        "type": "string",
+                        "title": "The lyrics Schema",
+                        "examples": [
+                            "\\Bomber\\\\n\\nAin't a hope in hell\\nNothin' gonna bring us down\\nThe way we fly\\nFive miles off the ground\\nBecause, we shoot to kill\\nAnd you know we always will\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber\\n\\nScream a thousand miles\\nFeel the black death rising moan\\nFirestorm coming closer\\nNapalm to the bone\\nBecause, you know we do it right\\nA mission every night\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber\\n\\nNo nightfighter\\nGonna stop us getting through\\nSirens make you shiver\\nYou bet my aim is true\\nBecause, we aim to please\\nBring you to your knees\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber ",
+                            "\\Dead Men Tell No Tales\\\\n\\nThis is it!\\n\\nBreaking up or breaking through,\\nBreaking something's all we ever do,\\nShoot straight, travel far,\\nStone crazy's all we ever are,\\nBut I don't care for lies,\\nAnd I won't tell you twice,\\nBecause when all else fails,\\nDead Men Tell No Tales\\n\\nShooting up away and back,\\nA bit of guts is all that you lack,\\nFar behind the stable door,\\nI know you've met that horse before,\\nBut I don't care for skag,\\nAnd this sure ain't no blag,\\nAt the end of all the tracks and trails,\\nDead Men Tell No Tales\\n\\nYou used to be my friend,\\nBut that friendship's coming to an end,\\nMy meaning must be clear,\\nYou know pity is all that you hear,\\nBut if you're doing smack,\\nYou won't be coming back,\\nI ain't the one to make your bail,\\nDead Men Tell No Tales "
+                        ]
+                    }
+                },
+                "examples": [{
+                    "song name": "Bomber",
+                    "band name": "Motorhead",
+                    "band members": [
+                        "Lemmy Kilmister",
+                        "Phil Campbell",
+                        "Mikkey Dee"
+                    ],
+                    "genre": "Rock 'N' Roll",
+                    "album name": "Bomber",
+                    "album label": "Bronze Records",
+                    "album release date": "1979-10-12",
+                    "song length": "03:43:00",
+                    "position on album": 10,
+                    "lyrics writers": [
+                        "Lemmy Kilmister"
+                    ],
+                    "music writers": [
+                        "Lemmy Kilmister",
+                        "Eddie Clarke",
+                        "Phil Taylor"
+                    ],
+                    "lyrics": "\\Bomber\\\\n\\nAin't a hope in hell\\nNothin' gonna bring us down\\nThe way we fly\\nFive miles off the ground\\nBecause, we shoot to kill\\nAnd you know we always will\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber\\n\\nScream a thousand miles\\nFeel the black death rising moan\\nFirestorm coming closer\\nNapalm to the bone\\nBecause, you know we do it right\\nA mission every night\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber\\n\\nNo nightfighter\\nGonna stop us getting through\\nSirens make you shiver\\nYou bet my aim is true\\nBecause, we aim to please\\nBring you to your knees\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber "
+                },
+                {
+                    "song name": "Dead Men Tell No Tales",
+                    "band name": "Motorhead",
+                    "band members": [
+                        "Lemmy Kilmister",
+                        "Phil Campbell",
+                        "Mikkey Dee"
+                    ],
+                    "genre": "Rock 'N' Roll",
+                    "album name": "Bomber",
+                    "album label": "Bronze Records",
+                    "album release date": "1979-10-12",
+                    "song length": "03:07:00",
+                    "position on album": 1,
+                    "lyrics writers": [
+                        "Lemmy Kilmister"
+                    ],
+                    "music writers": [
+                        "Lemmy Kilmister",
+                        "Eddie Clarke",
+                        "Phil Taylor"
+                    ],
+                    "lyrics": "\\Dead Men Tell No Tales\\\\n\\nThis is it!\\n\\nBreaking up or breaking through,\\nBreaking something's all we ever do,\\nShoot straight, travel far,\\nStone crazy's all we ever are,\\nBut I don't care for lies,\\nAnd I won't tell you twice,\\nBecause when all else fails,\\nDead Men Tell No Tales\\n\\nShooting up away and back,\\nA bit of guts is all that you lack,\\nFar behind the stable door,\\nI know you've met that horse before,\\nBut I don't care for skag,\\nAnd this sure ain't no blag,\\nAt the end of all the tracks and trails,\\nDead Men Tell No Tales\\n\\nYou used to be my friend,\\nBut that friendship's coming to an end,\\nMy meaning must be clear,\\nYou know pity is all that you hear,\\nBut if you're doing smack,\\nYou won't be coming back,\\nI ain't the one to make your bail,\\nDead Men Tell No Tales "
+                }]
             },
             "examples": [
-                ["Lemmy Kilmister",
-                    "Phil Campbell",
-                    "Mikkey Dee"
-                ]
-            ]
-        },
-        "genre": {
-            "type": "string",
-            "default": "",
-            "title": "The genre Schema",
-            "examples": [
-                "Rock 'N' Roll"
-            ]
-        },
-        "album name": {
-            "type": "string",
-            "default": "",
-            "title": "The album name Schema",
-            "examples": [
-                "Bomber"
-            ]
-        },
-        "album label": {
-            "type": "string",
-            "default": "",
-            "title": "The album label Schema",
-            "examples": [
-                "Bronze Records"
-            ]
-        },
-        "album release date": {
-            "type": "string",
-            "default": "",
-            "title": "The album release date Schema",
-            "examples": [
-                "1979-10-12"
-            ]
-        },
-        "song length": {
-            "type": "string",
-            "default": "",
-            "title": "The song length Schema",
-            "examples": [
-                "03:43:00"
-            ]
-        },
-        "position on album": {
-            "type": "integer",
-            "default": 0,
-            "title": "The position on album Schema",
-            "examples": [
-                10
-            ]
-        },
-        "lyrics writers": {
-            "type": "array",
-            "default": [],
-            "title": "The lyrics writers Schema",
-            "items": {
-                "type": "string",
-                "default": "",
-                "title": "A Schema",
-                "examples": [
-                    "Lemmy Kilmister"
-                ]
-            },
-            "examples": [
-                [
-                    "Lemmy Kilmister"]
-            ]
-        },
-        "music writers": {
-            "type": "array",
-            "default": [],
-            "title": "The music writers Schema",
-            "items": {
-                "type": "string",
-                "title": "A Schema",
-                "examples": [
-                    "Lemmy Kilmister",
-                    "Eddie Clarke",
-                    "Phil Taylor"
-                ]
-            },
-            "examples": [
-                ["Lemmy Kilmister",
-                    "Eddie Clarke",
-                    "Phil Taylor"
-                ]
-            ]
-        },
-        "lyrics": {
-            "type": "string",
-            "default": "",
-            "title": "The lyrics Schema",
-            "examples": [
-                "\\Bomber\\\\n\\nAin't a hope in hell\\nNothin' gonna bring us down\\nThe way we fly\\nFive miles off the ground\\nBecause, we shoot to kill\\nAnd you know we always will\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber\\n\\nScream a thousand miles\\nFeel the black death rising moan\\nFirestorm coming closer\\nNapalm to the bone\\nBecause, you know we do it right\\nA mission every night\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber\\n\\nNo nightfighter\\nGonna stop us getting through\\nSirens make you shiver\\nYou bet my aim is true\\nBecause, we aim to please\\nBring you to your knees\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber "
+                [{
+                    "song name": "Bomber",
+                    "band name": "Motorhead",
+                    "band members": [
+                        "Lemmy Kilmister",
+                        "Phil Campbell",
+                        "Mikkey Dee"
+                    ],
+                    "genre": "Rock 'N' Roll",
+                    "album name": "Bomber",
+                    "album label": "Bronze Records",
+                    "album release date": "1979-10-12",
+                    "song length": "03:43:00",
+                    "position on album": 10,
+                    "lyrics writers": [
+                        "Lemmy Kilmister"
+                    ],
+                    "music writers": [
+                        "Lemmy Kilmister",
+                        "Eddie Clarke",
+                        "Phil Taylor"
+                    ],
+                    "lyrics": "\\Bomber\\\\n\\nAin't a hope in hell\\nNothin' gonna bring us down\\nThe way we fly\\nFive miles off the ground\\nBecause, we shoot to kill\\nAnd you know we always will\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber\\n\\nScream a thousand miles\\nFeel the black death rising moan\\nFirestorm coming closer\\nNapalm to the bone\\nBecause, you know we do it right\\nA mission every night\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber\\n\\nNo nightfighter\\nGonna stop us getting through\\nSirens make you shiver\\nYou bet my aim is true\\nBecause, we aim to please\\nBring you to your knees\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber "
+                },
+                {
+                    "song name": "Dead Men Tell No Tales",
+                    "band name": "Motorhead",
+                    "band members": [
+                        "Lemmy Kilmister",
+                        "Phil Campbell",
+                        "Mikkey Dee"
+                    ],
+                    "genre": "Rock 'N' Roll",
+                    "album name": "Bomber",
+                    "album label": "Bronze Records",
+                    "album release date": "1979-10-12",
+                    "song length": "03:07:00",
+                    "position on album": 1,
+                    "lyrics writers": [
+                        "Lemmy Kilmister"
+                    ],
+                    "music writers": [
+                        "Lemmy Kilmister",
+                        "Eddie Clarke",
+                        "Phil Taylor"
+                    ],
+                    "lyrics": "\\Dead Men Tell No Tales\\\\n\\nThis is it!\\n\\nBreaking up or breaking through,\\nBreaking something's all we ever do,\\nShoot straight, travel far,\\nStone crazy's all we ever are,\\nBut I don't care for lies,\\nAnd I won't tell you twice,\\nBecause when all else fails,\\nDead Men Tell No Tales\\n\\nShooting up away and back,\\nA bit of guts is all that you lack,\\nFar behind the stable door,\\nI know you've met that horse before,\\nBut I don't care for skag,\\nAnd this sure ain't no blag,\\nAt the end of all the tracks and trails,\\nDead Men Tell No Tales\\n\\nYou used to be my friend,\\nBut that friendship's coming to an end,\\nMy meaning must be clear,\\nYou know pity is all that you hear,\\nBut if you're doing smack,\\nYou won't be coming back,\\nI ain't the one to make your bail,\\nDead Men Tell No Tales "
+                }]
             ]
         }
     },
     "examples": [{
-        "song name": "Bomber",
-        "band name": "Motorhead",
-        "band members": [
-            "Lemmy Kilmister",
-            "Phil Campbell",
-            "Mikkey Dee"
-        ],
-        "genre": "Rock 'N' Roll",
-        "album name": "Bomber",
-        "album label": "Bronze Records",
-        "album release date": "1979-10-12",
-        "song length": "03:43:00",
-        "position on album": 10,
-        "lyrics writers": [
-            "Lemmy Kilmister"
-        ],
-        "music writers": [
-            "Lemmy Kilmister",
-            "Eddie Clarke",
-            "Phil Taylor"
-        ],
-        "lyrics": "\\Bomber\\\\n\\nAin't a hope in hell\\nNothin' gonna bring us down\\nThe way we fly\\nFive miles off the ground\\nBecause, we shoot to kill\\nAnd you know we always will\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber\\n\\nScream a thousand miles\\nFeel the black death rising moan\\nFirestorm coming closer\\nNapalm to the bone\\nBecause, you know we do it right\\nA mission every night\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber\\n\\nNo nightfighter\\nGonna stop us getting through\\nSirens make you shiver\\nYou bet my aim is true\\nBecause, we aim to please\\nBring you to your knees\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber "
+        "podaci": [{
+            "song name": "Bomber",
+            "band name": "Motorhead",
+            "band members": [
+                "Lemmy Kilmister",
+                "Phil Campbell",
+                "Mikkey Dee"
+            ],
+            "genre": "Rock 'N' Roll",
+            "album name": "Bomber",
+            "album label": "Bronze Records",
+            "album release date": "1979-10-12",
+            "song length": "03:43:00",
+            "position on album": 10,
+            "lyrics writers": [
+                "Lemmy Kilmister"
+            ],
+            "music writers": [
+                "Lemmy Kilmister",
+                "Eddie Clarke",
+                "Phil Taylor"
+            ],
+            "lyrics": "\\Bomber\\\\n\\nAin't a hope in hell\\nNothin' gonna bring us down\\nThe way we fly\\nFive miles off the ground\\nBecause, we shoot to kill\\nAnd you know we always will\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber\\n\\nScream a thousand miles\\nFeel the black death rising moan\\nFirestorm coming closer\\nNapalm to the bone\\nBecause, you know we do it right\\nA mission every night\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber\\n\\nNo nightfighter\\nGonna stop us getting through\\nSirens make you shiver\\nYou bet my aim is true\\nBecause, we aim to please\\nBring you to your knees\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber "
+        },
+        {
+            "song name": "Dead Men Tell No Tales",
+            "band name": "Motorhead",
+            "band members": [
+                "Lemmy Kilmister",
+                "Phil Campbell",
+                "Mikkey Dee"
+            ],
+            "genre": "Rock 'N' Roll",
+            "album name": "Bomber",
+            "album label": "Bronze Records",
+            "album release date": "1979-10-12",
+            "song length": "03:07:00",
+            "position on album": 1,
+            "lyrics writers": [
+                "Lemmy Kilmister"
+            ],
+            "music writers": [
+                "Lemmy Kilmister",
+                "Eddie Clarke",
+                "Phil Taylor"
+            ],
+            "lyrics": "\\Dead Men Tell No Tales\\\\n\\nThis is it!\\n\\nBreaking up or breaking through,\\nBreaking something's all we ever do,\\nShoot straight, travel far,\\nStone crazy's all we ever are,\\nBut I don't care for lies,\\nAnd I won't tell you twice,\\nBecause when all else fails,\\nDead Men Tell No Tales\\n\\nShooting up away and back,\\nA bit of guts is all that you lack,\\nFar behind the stable door,\\nI know you've met that horse before,\\nBut I don't care for skag,\\nAnd this sure ain't no blag,\\nAt the end of all the tracks and trails,\\nDead Men Tell No Tales\\n\\nYou used to be my friend,\\nBut that friendship's coming to an end,\\nMy meaning must be clear,\\nYou know pity is all that you hear,\\nBut if you're doing smack,\\nYou won't be coming back,\\nI ain't the one to make your bail,\\nDead Men Tell No Tales "
+        }]
     }]
 }

@@ -2,6 +2,7 @@
 <head>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="./jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="./datatable.css" />
     <script type="text/javascript" charset="utf8" src="./jquery.min.js"></script>
     <script type="text/javascript" charset="utf8" src="./jquery.dataTables.min.js"></script>
     <script type="text/javascript" charset="utf8" src="./dataTables.buttons.min.js"></script>
@@ -14,11 +15,11 @@
     <h1>Datatable</h1>
     <table class="inputs"><tbody>
         <tr>
-            <td>Polje za pretragu</td>
-            <td><input type="text" Value="Unesite vrijednost" id="pretraga" name="pretraga"></td>
+            <td class="filteri">Polje za pretragu</td>
+            <td><input type="text" Value="Unesite vrijednost" id="pretraga" name="pretraga"/></td>
         </tr>
         <tr>
-            <td>
+            <td class="filteri">
                 <label for="atribut">Odaberite polje za pretragu:</label>
             <select id="atribut" name="atrinut">
               <option value=0>song name</option>
@@ -37,8 +38,8 @@
             </select>
             </td>
         </tr>
-        ><tr>
-            <td>
+        <tr>
+            <td class="filteri">
                 <input type="submit" id="gumb" value="Submit">
             </td>
         </tr>
@@ -69,6 +70,26 @@
 
 <script>
 var json_data = null;
+/*
+function format(d) {
+    concole.log(e);
+    // `d` is the original data object for the row
+    return (
+        '<dl>' +
+        '<dt>Song name:</dt>' +
+        '<dd>' +
+        d."song name" +
+        '</dd>' +
+        '<dt>Genre:</dt>' +
+        '<dd>' +
+        d.genre +
+        '</dd>' +
+        '<dt>Extra info:</dt>' +
+        '<dd>And any further details here (images etc)...</dd>' +
+        '</dl>'
+    );
+}
+*/
 var data_table = $('#tablica').DataTable({
         "data": null,
         "columns": [
@@ -172,6 +193,21 @@ async function getData(){
                 json_data = data;
          }).catch(err => err);
 }
-
+/*
+// Add event listener for opening and closing details
+data_table.on('click', 'td.dt-control', function (e) {
+    let tr = e.target.closest('tr');
+    let row = data_table.row(tr);
+ 
+    if (row.child.isShown()) {
+        // This row is already open - close it
+        row.child.hide();
+    }
+    else {
+        // Open this row
+        row.child(format(row.data())).show();
+    }
+});
+*/
 fill_table();
 </script>
