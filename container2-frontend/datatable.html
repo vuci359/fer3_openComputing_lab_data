@@ -121,14 +121,11 @@ var data_table = $('#tablica').DataTable({
                 }
                 
             },
-            {
-                text: 'Preuzmi CSV',
-                id:"get_csv",
+            {//ovaj gumb na demonstracijskoj stranici na INternetu radi
+                extend: "csv",
                 exportOptions: {
-                modifier: {
-                    search: 'none'
-                }
-            }
+                orthogonal: "export"
+      }
             }
         ]
     });
