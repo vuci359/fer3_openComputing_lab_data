@@ -175,7 +175,7 @@ COPY public."Album" (ident, band_ident, name, label, date_released) FROM stdin;
 --
 
 COPY public."Band" (ident, band_name, genre, year_founded, members) FROM stdin;
-1	Metallica	Trash Metal	1981	{"'James Hetfield'","'Kirk Hamett'","'Robert Trujilo'","'Lars Ulrich'"}
+1	Metallica	Trash Metal	1981	{"James Hetfield","Kirk Hamett","Robert Trujilo","Lars Ulrich"}
 3	Guns N' Roses	Glam Rock	1985	{"Axl Rose","Saul Hudson","Izzy Stradlin","Duff McKagan","Steven Adler"}
 2	Motorhead	Rock 'N' Roll	1975	{"Lemmy Kilmister","Phil Campbell","Mikkey Dee"}
 \.

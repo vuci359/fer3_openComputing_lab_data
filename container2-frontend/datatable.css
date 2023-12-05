@@ -4,3 +4,8 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+
+  #tablica > tbody > tr > td:hover{
+    overflow: visible; 
+    white-space: normal; 
+}
