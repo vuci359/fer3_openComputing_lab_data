@@ -24,6 +24,8 @@ services:
       condition: service_healthy
   environment:
    - ASPNETCORE_URLS=http://+:8080
+  links:
+   - openComputingLabFrontend
  
  opencomputingLabDatabase:
   image: 'vuci359/fer3_opencomputing_lab_exam:database_v1'

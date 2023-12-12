@@ -12,7 +12,16 @@ public class Album {
         set;
     }
     [Required]
-    public int ? band_ident {
+    [Column("band_ident")]
+
+    public int ? Bandident {
+        get;
+        set;
+    }
+
+    //reference navigation to Band
+    [Column("band_ident")]
+        public Band ? Band {
         get;
         set;
     }
