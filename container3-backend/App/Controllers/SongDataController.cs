@@ -12,6 +12,7 @@ using System.Text.Json.Nodes;
 using Microsoft.AspNetCore.Cors;
 using openComputingLab.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 
 //using Newtonsoft.Json;
 
@@ -32,11 +33,69 @@ public class SongDataController : ControllerBase
     }
     [HttpGet]
     [ActionName("GetData")]
-    public IActionResult GetData(string ? stupac = null, string ? parameter = null){
+    public IActionResult GetData(int ? stupac = null, string ? parameter = null){
 
 		try{
-            var SongData = _dbContext.Songs.Include(s => s.Album).ThenInclude(a => a.Band).ToList();
-            return Ok(SongData);
+            Microsoft.EntityFrameworkCore.Query.IIncludableQueryable<Song, Band?>? SongData = _dbContext.Songs.Include(s => s.Album).ThenInclude(a => a.Band);
+                        
+            if(parameter != null){
+                switch(stupac){
+                    case 0://song nam
+                        SongData.Where(a => a.name.Contains(parameter));
+                        break;
+                    case 1://band name
+                        SongData.Where(a => a.Album.Band.band_name.Contains(parameter));
+                        break;
+                    case 2://band members
+                        SongData.Where(a => a.Album.Band.members.Contains(parameter));
+                        break;
+                    case 3://genre
+                        SongData.Where(a => a.Album.Band.genre.Contains(parameter));
+                        break;
+                    case 4://album name
+                        SongData.Where(a => a.Album.name.Contains(parameter));
+                        break;
+                    case 5://album label
+                        SongData.Where(a => a.Album.label.Contains(parameter));
+                        break;
+                    case 6://album release date
+                        SongData.Where(a => a.Album.date_released.Equals(parameter));
+                        break;
+                    case 7://song length
+                        SongData.Where(a => a.length.Equals(parameter));
+                        break;
+                    case 8://position on album
+                        SongData.Where(a => a.name.Contains(parameter));
+                        break;
+                    case 9://lyrics writers
+                        SongData.Where(a => a.lyrics_writers.Contains(parameter));
+                        break;
+                    case 10://music writers
+                        SongData.Where(a => a.music_writers.Contains(parameter));
+                        break;
+                    case 11://lyrics
+                        SongData.Where(a => a.lyrics.Contains(parameter));
+                        break;
+                    default:
+                        SongData.Where(a => a.name.Contains(parameter)||
+                                //    a.length.Equals(parameter)||
+                                //    a.no_on_album.Equals(number)||
+                                    a.lyrics_writers.Contains(parameter)||
+                                    a.music_writers.Contains(parameter)||
+                                    a.lyrics.Contains(parameter)||
+                                    a.Album.name.Contains(parameter)||
+                                    a.Album.label.Contains(parameter)||
+                                //    a.Album.date_released.Equals(parameter)||
+                                    a.Album.Band.band_name.Contains(parameter)||
+                                    a.Album.Band.members.Contains(parameter)||
+                                    a.Album.Band.genre.Contains(parameter)
+                                    );
+                        break;
+                    
+                }
+            }
+            string json_string = JsonConvert.SerializeObject(SongData.ToList());
+            return Ok(JsonValue.Parse("{\"podaci\":"+json_string+"}"));
 
         }catch(Exception e){
             Console.WriteLine(e.StackTrace);

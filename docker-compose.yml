@@ -10,7 +10,8 @@ services:
   container_name: opencomputingLabFrontend
   ports:
    - "80:80"
-
+  networks:
+   - database-to-dotnet-network
 
  opencomputingLabBackend:
   image: 'vuci359/fer3_opencomputing_lab_exam:backend_v1'
@@ -23,9 +24,7 @@ services:
     opencomputingLabDatabase:
       condition: service_healthy
   environment:
-   - ASPNETCORE_URLS=http://+:8080
-  links:
-   - openComputingLabFrontend
+   - ASPNETCORE_URLS=http://+:8080/
  
  opencomputingLabDatabase:
   image: 'vuci359/fer3_opencomputing_lab_exam:database_v1'

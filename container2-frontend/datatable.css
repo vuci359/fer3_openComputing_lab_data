@@ -6,6 +6,6 @@
   }
 
   #tablica > tbody > tr > td:hover{
-    overflow: visible; 
+    overflow: visible;
     white-space: normal; 
 }

@@ -94,17 +94,17 @@ var data_table = $('#tablica').DataTable({
         "data": null,
         "columns": [
             { "data": "song name" },
-            { "data": "band name" },
-            { "data": "band members" },
-            { "data": "genre" },
-            { "data": "album name" },
-            { "data": "album label" },
-            { "data": "album release date" },
+            { "data": "album.band.band name" },
+            { "data": "album.band.band members" },
+            { "data": "album.band.genre" },
+            { "data": "album.album name" },
+            { "data": "album.album label" },
+            { "data": "album.album release date" },
             { "data": "song length" },
             { "data": "position on album" },
             { "data": "lyrics writers" },
             { "data": "music writers" },
-            { "data": "lyrics" }
+            { "data": "lyrics                   "}
         ],
         dom: 'Bfrtip',
         buttons: [
@@ -165,14 +165,14 @@ $('#gumb').on('click', function () {
 // output: {"success":"true"}
 async function getData(){
       
-         return await fetch('http://localhost:8087' + '/api/HeavyMetalData/GetData',{
+         return await fetch('http://localhost:8087' + '/api/SongData/GetData',{
             method: 'GET',
             mode:'cors',
             headers:{
                 'Access-Control-Allow-Origin': 'true',
                 'Sec-Fetch-Mode': 'cors'
             },
-            data: jQuery.param({stupac:"music writers", parameter:"James Hetfield"}),
+            data: jQuery.param({stupac:"", parameter:""}),
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
         }).then(response => {
              if (response.status >= 200 && response.status < 300) {
