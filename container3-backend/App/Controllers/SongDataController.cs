@@ -51,7 +51,7 @@ public class SongDataController : ControllerBase
                         break;
                     case 6://album release date
                         if (DateOnly.TryParse(parameter, out DateOnly dateValue)){
-                            song_filter = song_filter.Or(a => a.length.Equals(dateValue));
+                            song_filter = song_filter.Or(a => a.Album.date_released.Equals(dateValue));
                         }
                         break;
                     case 7://song length
@@ -61,8 +61,7 @@ public class SongDataController : ControllerBase
                         break;
                     case 8://position on album
                         if (Int32.TryParse(parameter, out int numValue)){
-                            Console.WriteLine(numValue);
-                            song_filter = song_filter.Or(a => a.length.Equals(numValue));
+                            song_filter = song_filter.Or(a => a.no_on_album.Equals(numValue));
                         }
                         break;
                     case 9://lyrics writers
@@ -102,6 +101,7 @@ public class SongDataController : ControllerBase
 
         }catch(Exception e){
             Console.WriteLine(e.StackTrace);
+            return NotFound();
         }
 
         return Ok();

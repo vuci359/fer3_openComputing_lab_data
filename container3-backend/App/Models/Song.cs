@@ -45,11 +45,14 @@ public class Song {
         set;
     }
     [JsonProperty("lyrics writers")]
+    [Column(TypeName = "varchar(25)[]")]
+
     public List<string> ? lyrics_writers{
         get;
         set;
     }
     [JsonProperty("music writers")]
+    [Column(TypeName = "varchar(25)[]")]
     public List<string> ? music_writers{
         get;
         set;

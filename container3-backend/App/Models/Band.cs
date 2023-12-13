@@ -33,6 +33,8 @@ public class Band {
     }
     [Required]
     [JsonProperty("band members")]
+    [Column(TypeName = "varchar(25)[]")]
+
     public List<string> ? members {
         get;
         set;
