@@ -9,7 +9,7 @@ namespace openComputingLab.Models;
 [JsonObject("band")]
 public class Band {
 
-    [JsonIgnore]
+   // [JsonIgnore]
     [Key, Required]
     public int ident {
         get;

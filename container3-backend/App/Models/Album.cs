@@ -9,14 +9,14 @@ namespace openComputingLab.Models;
 [Table("Album")]
 [JsonObject("album")]
 public class Album {
-    [JsonIgnore]
+   // [JsonIgnore]
     [Key, Required]
     public int ident {
         get;
         set;
     }
 
-    [JsonIgnore]
+  //  [JsonIgnore]
     [Required]
     [Column("band_ident")]
 

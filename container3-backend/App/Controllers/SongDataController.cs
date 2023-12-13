@@ -1,18 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Text.RegularExpressions;
-using System.Net.Http;
 using openComputingLab.Data;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Npgsql;
-using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
-using System.Text.Unicode;
-using System.Text;
 using System.Text.Json.Nodes;
 using Microsoft.AspNetCore.Cors;
 using openComputingLab.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Net;
 
 //using Newtonsoft.Json;
 
@@ -94,7 +86,23 @@ public class SongDataController : ControllerBase
                     
                 }
             }
-            string json_string = JsonConvert.SerializeObject(SongData.ToList());
+
+            var resolver = new IgnorePropertiesResolver();
+
+            resolver.ignoreProperty("Bandident");
+            resolver.ignoreProperty("ident");
+            resolver.ignoreProperty("Albumident");
+
+            string json_string = JsonConvert.SerializeObject(SongData, new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore,
+                    DefaultValueHandling = DefaultValueHandling.Ignore,
+                    ContractResolver = resolver
+
+                });
+
+
+         //   string json_string = JsonConvert.SerializeObject(SongData.ToList());
             return Ok(JsonValue.Parse("{\"podaci\":"+json_string+"}"));
 
         }catch(Exception e){
