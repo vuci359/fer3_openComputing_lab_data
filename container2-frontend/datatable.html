@@ -7,9 +7,6 @@
     <script type="text/javascript" charset="utf8" src="./jquery.dataTables.min.js"></script>
     <script type="text/javascript" charset="utf8" src="./dataTables.buttons.min.js"></script>
     <script type="text/javascript" charset="utf8" src="./buttons.html5.min.js"></script>
-
-
-
 </head>
 <body>
     <h1>Datatable</h1>
@@ -58,7 +55,7 @@
                 <th>position on album</th>
                 <th>lyrics writers</th>
                 <th>music writers</th>
-                <th>lyrics</th>
+                <th class="lyrics">lyrics</th>
             </tr>
         </thead>
         <tbody>
@@ -67,29 +64,10 @@
     <a href="./index.html">Index</a>
 </body>
 
-
 <script>
-var json_data = null;
-/*
-function format(d) {
-    concole.log(e);
-    // `d` is the original data object for the row
-    return (
-        '<dl>' +
-        '<dt>Song name:</dt>' +
-        '<dd>' +
-        d."song name" +
-        '</dd>' +
-        '<dt>Genre:</dt>' +
-        '<dd>' +
-        d.genre +
-        '</dd>' +
-        '<dt>Extra info:</dt>' +
-        '<dd>And any further details here (images etc)...</dd>' +
-        '</dl>'
-    );
-}
-*/
+    var json_data = null;
+    var table = null;
+
 var data_table = $('#tablica').DataTable({
         "data": null,
         "columns": [
@@ -104,7 +82,7 @@ var data_table = $('#tablica').DataTable({
             { "data": "position on album" },
             { "data": "lyrics writers" },
             { "data": "music writers" },
-            { "data": "lyrics                   "}
+            { "data": "lyrics"}
         ],
         dom: 'Bfrtip',
         buttons: [
@@ -112,12 +90,13 @@ var data_table = $('#tablica').DataTable({
                 text: 'Preuzmi JSON',
                 id:"get_json",
                 action: function ( e, dt, button, config ) {
-                    var data = dt.buttons.exportData();
-                    console.log(data);
-                    $.fn.dataTable.fileSave(
-                        new Blob( [ JSON.stringify( data ) ] ),
-                        'Export.json'
-                    );
+                    getData(search_category.value, search_term.value);
+                    console.log(json_data);
+                    const a = document.createElement("a");
+		            const file = new Blob([JSON.stringify(json_data)], { type: "text/plain" });
+		            a.href = URL.createObjectURL(file);
+		            a.download = "yourfile.json";
+		            a.click();
                 }
                 
             },
@@ -134,19 +113,18 @@ var data_table = $('#tablica').DataTable({
 async function fill_table(){
     //učitavanje podataka
     await getData();
+    table_data=json_data;
     //punjenje tablice
     data_table.clear();
-    data_table.rows.add(json_data.podaci).draw();
+    data_table.rows.add(table_data.podaci).draw();
 }
 
 const search_term = document.querySelector("#pretraga");
 const search_category = document.querySelector("#atribut");
 
 $('#gumb').on('click', function () {
-    console.log(search_category.value);
-    console.log(search_term.value);
     data_table.clear();
-    data_table.rows.add(json_data.podaci).draw()
+    data_table.rows.add(table_data.podaci).draw()
     if(search_term.value != "*"){    
         if(search_category.value == 12){
             data_table
@@ -163,48 +141,42 @@ $('#gumb').on('click', function () {
 } );
 
 // output: {"success":"true"}
-async function getData(){
-      
-         return await fetch('http://localhost:8087' + '/api/SongData/GetData',{
+async function getData(stupac = null, parameter = null){
+        console.log(stupac, parameter);
+        var link = 'http://localhost:8087' + '/api/SongData/GetData';
+        if(stupac != null || parameter != null){
+            link = link + '?';
+        }
+        if(stupac != null){
+            link = link + 'stupac='+stupac;
+        }
+        if(stupac != null && parameter != null){
+            link = link + '&';
+        }
+        if(parameter != null){
+            link = link + 'parameter='+parameter;
+        }
+        return await fetch(link,{
             method: 'GET',
             mode:'cors',
             headers:{
                 'Access-Control-Allow-Origin': 'true',
                 'Sec-Fetch-Mode': 'cors'
             },
-            data: jQuery.param({stupac:"", parameter:""}),
+            data: jQuery.param(stupac, parameter),
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
         }).then(response => {
              if (response.status >= 200 && response.status < 300) {
-               // console.log("aaa");
-             //   console.log(response.body);
-              //  console.log("bbb");
                 return response;
             } else {
                 console.log('Something happened wrong');
                 console.log(response.body);
                }
          }).then(res => res.json()).then(data => {
-              //  console.log("zzz");
-               //console.log(data);
                 json_data = data;
          }).catch(err => err);
 }
-/*
-// Add event listener for opening and closing details
-data_table.on('click', 'td.dt-control', function (e) {
-    let tr = e.target.closest('tr');
-    let row = data_table.row(tr);
- 
-    if (row.child.isShown()) {
-        // This row is already open - close it
-        row.child.hide();
-    }
-    else {
-        // Open this row
-        row.child(format(row.data())).show();
-    }
-});
-*/
+
 fill_table();
+
 </script>
