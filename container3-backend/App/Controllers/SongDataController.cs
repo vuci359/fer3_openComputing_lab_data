@@ -26,65 +26,62 @@ public class SongDataController : ControllerBase
     [HttpGet]
     [ActionName("GetData")]
     public IActionResult GetData(int ? stupac = null, string ? parameter = null){
-
-		try{
-            Microsoft.EntityFrameworkCore.Query.IIncludableQueryable<Song, Band?>? SongData = _dbContext.Songs.Include(s => s.Album).ThenInclude(a => a.Band);
-                        
+        try{
+            Microsoft.EntityFrameworkCore.Query.IIncludableQueryable<Song, Band?>? SongData;
+            var song_filter = PredicateBuilder.False<Song>();
             if(parameter != null){
                 switch(stupac){
-                    case 0://song nam
-                        SongData.Where(a => a.name.Contains(parameter));
+                    case 0://song name
+                        song_filter = song_filter.Or(a => a.name.Contains(parameter));
                         break;
                     case 1://band name
-                        SongData.Where(a => a.Album.Band.band_name.Contains(parameter));
+                        song_filter = song_filter.Or(a => a.Album.Band.band_name.Contains(parameter));
                         break;
                     case 2://band members
-                        SongData.Where(a => a.Album.Band.members.Contains(parameter));
+                        song_filter = song_filter.Or(a => a.Album.Band.members.Contains(parameter));
                         break;
                     case 3://genre
-                        SongData.Where(a => a.Album.Band.genre.Contains(parameter));
+                        song_filter = song_filter.Or(a => a.Album.Band.genre.Contains(parameter));
                         break;
                     case 4://album name
-                        SongData.Where(a => a.Album.name.Contains(parameter));
+                        song_filter = song_filter.Or(a => a.Album.name.Contains(parameter));
                         break;
                     case 5://album label
-                        SongData.Where(a => a.Album.label.Contains(parameter));
+                        song_filter = song_filter.Or(a => a.Album.label.Contains(parameter));
                         break;
                     case 6://album release date
-                        SongData.Where(a => a.Album.date_released.Equals(parameter));
+                        if (DateOnly.TryParse(parameter, out DateOnly dateValue)){
+                            song_filter = song_filter.Or(a => a.length.Equals(dateValue));
+                        }
                         break;
                     case 7://song length
-                        SongData.Where(a => a.length.Equals(parameter));
+                        if (TimeSpan.TryParse(parameter, out TimeSpan timeValue)){
+                            song_filter = song_filter.Or(a => a.length.Equals(timeValue));
+                        }
                         break;
                     case 8://position on album
-                        SongData.Where(a => a.name.Contains(parameter));
+                        if (Int32.TryParse(parameter, out int numValue)){
+                            Console.WriteLine(numValue);
+                            song_filter = song_filter.Or(a => a.length.Equals(numValue));
+                        }
                         break;
                     case 9://lyrics writers
-                        SongData.Where(a => a.lyrics_writers.Contains(parameter));
+                        song_filter = song_filter.Or(a => a.lyrics_writers.Contains(parameter));
                         break;
                     case 10://music writers
-                        SongData.Where(a => a.music_writers.Contains(parameter));
+                        song_filter = song_filter.Or(a => a.music_writers.Contains(parameter));
                         break;
                     case 11://lyrics
-                        SongData.Where(a => a.lyrics.Contains(parameter));
+                        song_filter = song_filter.Or(a => a.lyrics.Contains(parameter));
                         break;
                     default:
-                        SongData.Where(a => a.name.Contains(parameter)||
-                                //    a.length.Equals(parameter)||
-                                //    a.no_on_album.Equals(number)||
-                                    a.lyrics_writers.Contains(parameter)||
-                                    a.music_writers.Contains(parameter)||
-                                    a.lyrics.Contains(parameter)||
-                                    a.Album.name.Contains(parameter)||
-                                    a.Album.label.Contains(parameter)||
-                                //    a.Album.date_released.Equals(parameter)||
-                                    a.Album.Band.band_name.Contains(parameter)||
-                                    a.Album.Band.members.Contains(parameter)||
-                                    a.Album.Band.genre.Contains(parameter)
-                                    );
-                        break;
-                    
+                        
+                        break;                   
                 }
+                SongData = _dbContext.Songs.Where(song_filter).Include(s => s.Album).ThenInclude(a => a.Band);
+            }else{
+                SongData = _dbContext.Songs.Include(s => s.Album).ThenInclude(a => a.Band);
+
             }
 
             var resolver = new IgnorePropertiesResolver();
@@ -93,7 +90,7 @@ public class SongDataController : ControllerBase
             resolver.ignoreProperty("ident");
             resolver.ignoreProperty("Albumident");
 
-            string json_string = JsonConvert.SerializeObject(SongData, new JsonSerializerSettings
+            string json_string = JsonConvert.SerializeObject(SongData.ToList(), new JsonSerializerSettings
                 {
                     NullValueHandling = NullValueHandling.Ignore,
                     DefaultValueHandling = DefaultValueHandling.Ignore,
@@ -101,8 +98,6 @@ public class SongDataController : ControllerBase
 
                 });
 
-
-         //   string json_string = JsonConvert.SerializeObject(SongData.ToList());
             return Ok(JsonValue.Parse("{\"podaci\":"+json_string+"}"));
 
         }catch(Exception e){
