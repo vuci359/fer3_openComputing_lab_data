@@ -23,9 +23,39 @@ public class SongDataController : ControllerBase
     {
         _dbContext = dbContext;
     }
+
+
     [HttpGet]
     [ActionName("GetData")]
-    public IActionResult GetData(int ? stupac = null, string ? parameter = null){
+    public IActionResult GetData(){
+        try{
+            return Ok(_dbContext.Songs.Include(s => s.Album).ThenInclude(a => a.Band));
+
+        }catch(Exception e){
+           // Console.WriteLine(e.StackTrace);
+            return NotFound();
+        }
+
+        return Ok();
+    }
+
+    [HttpGet]
+    [ActionName("GetDataById")]
+    public IActionResult GetDataById(int ident){
+        try{
+            return Ok(_dbContext.Songs.Where(a => a.ident.Equals(ident)).Include(s => s.Album).ThenInclude(a => a.Band));
+
+        }catch(Exception e){
+           // Console.WriteLine(e.StackTrace);
+            return NotFound();
+        }
+
+        return Ok();
+    }
+
+    [HttpGet]
+    [ActionName("GetStructuredData")]
+    public IActionResult GetStructuredData(int ? stupac = null, string ? parameter = null){
         try{
             Microsoft.EntityFrameworkCore.Query.IIncludableQueryable<Song, Band?>? SongData;
             var song_filter = PredicateBuilder.False<Song>();
@@ -108,7 +138,7 @@ public class SongDataController : ControllerBase
             return Ok(JsonValue.Parse("{\"podaci\":"+json_string+"}"));
 
         }catch(Exception e){
-            Console.WriteLine(e.StackTrace);
+           // Console.WriteLine(e.StackTrace);
             return NotFound();
         }
 

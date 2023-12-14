@@ -143,7 +143,7 @@ $('#gumb').on('click', function () {
 // output: {"success":"true"}
 async function getData(stupac = null, parameter = null){
         console.log(stupac, parameter);
-        var link = 'http://localhost:8087' + '/api/SongData/GetData';
+        var link = 'http://localhost:8087' + '/api/SongData/GetStructuredData';
         if(stupac != null || parameter != null){
             link = link + '?';
         }
