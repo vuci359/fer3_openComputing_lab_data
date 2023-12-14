@@ -30,7 +30,7 @@ public class SongController : ControllerBase
             return Ok(_dbContext.Songs.ToArray());
 
         }catch(Exception e){
-            Console.WriteLine(e.StackTrace);
+           // Console.WriteLine(e.StackTrace);
             return NotFound();
         }
 

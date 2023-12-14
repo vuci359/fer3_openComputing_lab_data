@@ -30,7 +30,7 @@ public class AlbumController : ControllerBase
             return Ok(_dbContext.Albums.ToArray());
 
         }catch(Exception e){
-            Console.WriteLine(e.StackTrace);
+          //  Console.WriteLine(e.StackTrace);
             return NotFound();
         }
 

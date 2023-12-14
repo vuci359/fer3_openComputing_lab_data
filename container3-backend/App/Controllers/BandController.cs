@@ -30,7 +30,7 @@ public class BandController : ControllerBase
             return Ok(_dbContext.Bands.ToArray());
 
         }catch(Exception e){
-            Console.WriteLine(e.StackTrace);
+          //  Console.WriteLine(e.StackTrace);
             return NotFound();
         }
 

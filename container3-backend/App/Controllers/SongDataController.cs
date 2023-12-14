@@ -6,8 +6,6 @@ using Microsoft.AspNetCore.Cors;
 using openComputingLab.Models;
 using Microsoft.EntityFrameworkCore;
 
-//using Newtonsoft.Json;
-
 namespace openComputingLab.Controllers;
 
 [ApiController]
