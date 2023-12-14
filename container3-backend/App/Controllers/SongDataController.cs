@@ -33,8 +33,6 @@ public class SongDataController : ControllerBase
            // Console.WriteLine(e.StackTrace);
             return NotFound();
         }
-
-        return Ok();
     }
 
     [HttpGet]
@@ -47,8 +45,6 @@ public class SongDataController : ControllerBase
            // Console.WriteLine(e.StackTrace);
             return NotFound();
         }
-
-        return Ok();
     }
 
     [HttpGet]
@@ -139,9 +135,6 @@ public class SongDataController : ControllerBase
            // Console.WriteLine(e.StackTrace);
             return NotFound();
         }
-
-        return Ok();
     }
 }
 
-//		where {stupac} like {parameter}
