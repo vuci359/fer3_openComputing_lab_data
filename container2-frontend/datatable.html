@@ -2,23 +2,21 @@
 <head>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="./jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="./datatable.css" />
     <script type="text/javascript" charset="utf8" src="./jquery.min.js"></script>
     <script type="text/javascript" charset="utf8" src="./jquery.dataTables.min.js"></script>
     <script type="text/javascript" charset="utf8" src="./dataTables.buttons.min.js"></script>
     <script type="text/javascript" charset="utf8" src="./buttons.html5.min.js"></script>
-
-
-
 </head>
 <body>
     <h1>Datatable</h1>
     <table class="inputs"><tbody>
         <tr>
-            <td>Polje za pretragu</td>
-            <td><input type="text" Value="Unesite vrijednost" id="pretraga" name="pretraga"></td>
+            <td class="filteri">Polje za pretragu</td>
+            <td><input type="text" Value="Unesite vrijednost" id="pretraga" name="pretraga"/></td>
         </tr>
         <tr>
-            <td>
+            <td class="filteri">
                 <label for="atribut">Odaberite polje za pretragu:</label>
             <select id="atribut" name="atrinut">
               <option value=0>song name</option>
@@ -37,8 +35,8 @@
             </select>
             </td>
         </tr>
-        ><tr>
-            <td>
+        <tr>
+            <td class="filteri">
                 <input type="submit" id="gumb" value="Submit">
             </td>
         </tr>
@@ -57,7 +55,7 @@
                 <th>position on album</th>
                 <th>lyrics writers</th>
                 <th>music writers</th>
-                <th>lyrics</th>
+                <th class="lyrics">lyrics</th>
             </tr>
         </thead>
         <tbody>
@@ -66,24 +64,25 @@
     <a href="./index.html">Index</a>
 </body>
 
-
 <script>
-var json_data = null;
+    var json_data = null;
+    var table = null;
+
 var data_table = $('#tablica').DataTable({
         "data": null,
         "columns": [
             { "data": "song name" },
-            { "data": "band name" },
-            { "data": "band members" },
-            { "data": "genre" },
-            { "data": "album name" },
-            { "data": "album label" },
-            { "data": "album release date" },
+            { "data": "album.band.band name" },
+            { "data": "album.band.band members" },
+            { "data": "album.band.genre" },
+            { "data": "album.album name" },
+            { "data": "album.album label" },
+            { "data": "album.album release date" },
             { "data": "song length" },
             { "data": "position on album" },
             { "data": "lyrics writers" },
             { "data": "music writers" },
-            { "data": "lyrics" }
+            { "data": "lyrics"}
         ],
         dom: 'Bfrtip',
         buttons: [
@@ -91,23 +90,21 @@ var data_table = $('#tablica').DataTable({
                 text: 'Preuzmi JSON',
                 id:"get_json",
                 action: function ( e, dt, button, config ) {
-                    var data = dt.buttons.exportData();
-                    console.log(data);
-                    $.fn.dataTable.fileSave(
-                        new Blob( [ JSON.stringify( data ) ] ),
-                        'Export.json'
-                    );
+                    getData(search_category.value, search_term.value);
+                    console.log(json_data);
+                    const a = document.createElement("a");
+		            const file = new Blob([JSON.stringify(json_data)], { type: "text/plain" });
+		            a.href = URL.createObjectURL(file);
+		            a.download = "yourfile.json";
+		            a.click();
                 }
                 
             },
-            {
-                text: 'Preuzmi CSV',
-                id:"get_csv",
+            {//ovaj gumb na demonstracijskoj stranici na INternetu radi
+                extend: "csv",
                 exportOptions: {
-                modifier: {
-                    search: 'none'
-                }
-            }
+                orthogonal: "export"
+      }
             }
         ]
     });
@@ -116,19 +113,18 @@ var data_table = $('#tablica').DataTable({
 async function fill_table(){
     //učitavanje podataka
     await getData();
+    table_data=json_data;
     //punjenje tablice
     data_table.clear();
-    data_table.rows.add(json_data.podaci).draw();
+    data_table.rows.add(table_data.podaci).draw();
 }
 
 const search_term = document.querySelector("#pretraga");
 const search_category = document.querySelector("#atribut");
 
 $('#gumb').on('click', function () {
-    console.log(search_category.value);
-    console.log(search_term.value);
     data_table.clear();
-    data_table.rows.add(json_data.podaci).draw()
+    data_table.rows.add(table_data.podaci).draw()
     if(search_term.value != "*"){    
         if(search_category.value == 12){
             data_table
@@ -145,33 +141,42 @@ $('#gumb').on('click', function () {
 } );
 
 // output: {"success":"true"}
-async function getData(){
-      
-         return await fetch('http://localhost:8087' + '/api/HeavyMetalData/GetData',{
+async function getData(stupac = null, parameter = null){
+        console.log(stupac, parameter);
+        var link = 'http://localhost:8087' + '/api/SongData/GetStructuredData';
+        if(stupac != null || parameter != null){
+            link = link + '?';
+        }
+        if(stupac != null){
+            link = link + 'stupac='+stupac;
+        }
+        if(stupac != null && parameter != null){
+            link = link + '&';
+        }
+        if(parameter != null){
+            link = link + 'parameter='+parameter;
+        }
+        return await fetch(link,{
             method: 'GET',
             mode:'cors',
             headers:{
                 'Access-Control-Allow-Origin': 'true',
                 'Sec-Fetch-Mode': 'cors'
             },
-            data: jQuery.param({stupac:"music writers", parameter:"James Hetfield"}),
+            data: jQuery.param(stupac, parameter),
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
         }).then(response => {
              if (response.status >= 200 && response.status < 300) {
-               // console.log("aaa");
-             //   console.log(response.body);
-              //  console.log("bbb");
                 return response;
             } else {
                 console.log('Something happened wrong');
                 console.log(response.body);
                }
          }).then(res => res.json()).then(data => {
-              //  console.log("zzz");
-               //console.log(data);
                 json_data = data;
          }).catch(err => err);
 }
 
 fill_table();
+
 </script>

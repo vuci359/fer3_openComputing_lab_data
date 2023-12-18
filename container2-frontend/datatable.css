@@ -1,0 +1,17 @@
+#tablica > tbody > tr > td{
+    max-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  #tablica > tbody > tr > td:hover{
+    overflow: visible;
+    white-space: normal;
+    text-overflow: ellipsis;
+  }
+
+  #tablica > thead > tr > th .lyrics{
+    white-space: normal; 
+    width: 120%;
+  }

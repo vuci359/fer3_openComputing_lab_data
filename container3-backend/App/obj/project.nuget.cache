@@ -1,11 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "0WU16gZIf6E2hmOG8A62nsoyQGC6P6ewHx4RziRNiG8ffeFvOKXVA3nPeG26ggYVYCL0RAH72ypCQpj10HYkbQ==",
+  "dgSpecHash": "FfT2aNbI8RZ+0tpzml82UU9sDHPWjS8Qvqo5zpGRwN2k+ny+atMaQ1eXQU93eXPVrvnSsht9QLWjSUjqsQm+ZA==",
   "success": true,
   "projectFilePath": "/home/majmun/Dokumenti/FER/or/fer3_openComputing_lab_data/container3-backend/App/DotNet.Docker.csproj",
   "expectedPackageFiles": [
     "/home/majmun/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/home/majmun/.nuget/packages/json.net/1.0.33/json.net.1.0.33.nupkg.sha512",
+    "/home/majmun/.nuget/packages/microsoft.aspnetcore.authorization/7.0.0/microsoft.aspnetcore.authorization.7.0.0.nupkg.sha512",
+    "/home/majmun/.nuget/packages/microsoft.aspnetcore.components/7.0.0/microsoft.aspnetcore.components.7.0.0.nupkg.sha512",
+    "/home/majmun/.nuget/packages/microsoft.aspnetcore.components.analyzers/7.0.0/microsoft.aspnetcore.components.analyzers.7.0.0.nupkg.sha512",
+    "/home/majmun/.nuget/packages/microsoft.aspnetcore.metadata/7.0.0/microsoft.aspnetcore.metadata.7.0.0.nupkg.sha512",
     "/home/majmun/.nuget/packages/microsoft.entityframeworkcore/7.0.13/microsoft.entityframeworkcore.7.0.13.nupkg.sha512",
     "/home/majmun/.nuget/packages/microsoft.entityframeworkcore.abstractions/7.0.13/microsoft.entityframeworkcore.abstractions.7.0.13.nupkg.sha512",
     "/home/majmun/.nuget/packages/microsoft.entityframeworkcore.analyzers/7.0.13/microsoft.entityframeworkcore.analyzers.7.0.13.nupkg.sha512",

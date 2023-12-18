@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
-
+using Microsoft.AspNetCore.Builder;
 using openComputingLab.Data;
 using openComputingLab.Controllers;
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +14,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext <AppDbContext> (o => o.UseNpgsql(builder.Configuration.GetConnectionString("Ef_Postgres_Db")));
 
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment()){

@@ -1,176 +1,529 @@
 {
     "$schema": "https://json-schema.org/draft/2019-09/schema",
-    "$id": "./heavy_metal_songs_data.json",
+    "$id": "http://example.com/example.json",
     "type": "object",
     "default": {},
     "title": "Root Schema",
     "required": [
-        "song name",
-        "band name",
-        "band members",
-        "genre",
-        "album name",
-        "album label",
-        "album release date",
-        "song length",
-        "position on album",
-        "lyrics writers",
-        "music writers",
-        "lyrics"
+        "podaci"
     ],
     "properties": {
-        "song name": {
-            "type": "string",
-            "default": "",
-            "title": "The song name Schema",
-            "examples": [
-                "Bomber"
-            ]
-        },
-        "band name": {
-            "type": "string",
-            "default": "",
-            "title": "The band name Schema",
-            "examples": [
-                "Motorhead"
-            ]
-        },
-        "band members": {
+        "podaci": {
             "type": "array",
             "default": [],
-            "title": "The band members Schema",
+            "title": "The podaci Schema",
             "items": {
-                "type": "string",
+                "type": "object",
                 "title": "A Schema",
-                "examples": [
-                    "Lemmy Kilmister",
-                    "Phil Campbell",
-                    "Mikkey Dee"
-                ]
+                "required": [
+                    "album",
+                    "song name",
+                    "song length",
+                    "position on album",
+                    "lyrics writers",
+                    "music writers",
+                    "lyrics"
+                ],
+                "properties": {
+                    "album": {
+                        "type": "object",
+                        "title": "The album Schema",
+                        "required": [
+                            "band",
+                            "album name",
+                            "album label",
+                            "album release date"
+                        ],
+                        "properties": {
+                            "band": {
+                                "type": "object",
+                                "title": "The band Schema",
+                                "required": [
+                                    "band name",
+                                    "genre",
+                                    "band members"
+                                ],
+                                "properties": {
+                                    "band name": {
+                                        "type": "string",
+                                        "title": "The band name Schema",
+                                        "examples": [
+                                            "Motorhead"
+                                        ]
+                                    },
+                                    "genre": {
+                                        "type": "string",
+                                        "title": "The genre Schema",
+                                        "examples": [
+                                            "Rock 'N' Roll"
+                                        ]
+                                    },
+                                    "band members": {
+                                        "type": "array",
+                                        "title": "The band members Schema",
+                                        "items": {
+                                            "type": "string",
+                                            "title": "A Schema",
+                                            "examples": [
+                                                "Lemmy Kilmister",
+                                                "Phil Campbell",
+                                                "Mikkey Dee"
+                                            ]
+                                        },
+                                        "examples": [
+                                            ["Lemmy Kilmister",
+                                                "Phil Campbell",
+                                                "Mikkey Dee"
+                                            ],
+                                            ["Lemmy Kilmister",
+                                                "Phil Campbell",
+                                                "Mikkey Dee"
+                                            ],
+                                            ["Lemmy Kilmister",
+                                                "Phil Campbell",
+                                                "Mikkey Dee"
+                                            ]
+                                        ]
+                                    }
+                                },
+                                "examples": [{
+                                    "band name": "Motorhead",
+                                    "genre": "Rock 'N' Roll",
+                                    "band members": [
+                                        "Lemmy Kilmister",
+                                        "Phil Campbell",
+                                        "Mikkey Dee"
+                                    ]
+                                },
+                                {
+                                    "band name": "Motorhead",
+                                    "genre": "Rock 'N' Roll",
+                                    "band members": [
+                                        "Lemmy Kilmister",
+                                        "Phil Campbell",
+                                        "Mikkey Dee"
+                                    ]
+                                },
+                                {
+                                    "band name": "Motorhead",
+                                    "genre": "Rock 'N' Roll",
+                                    "band members": [
+                                        "Lemmy Kilmister",
+                                        "Phil Campbell",
+                                        "Mikkey Dee"
+                                    ]
+                                }]
+                            },
+                            "album name": {
+                                "type": "string",
+                                "title": "The album name Schema",
+                                "examples": [
+                                    "Motorhead",
+                                    "Ace of Spades"
+                                ]
+                            },
+                            "album label": {
+                                "type": "string",
+                                "title": "The album label Schema",
+                                "examples": [
+                                    "Chriswick Records",
+                                    "Bronze Records"
+                                ]
+                            },
+                            "album release date": {
+                                "type": "string",
+                                "title": "The album release date Schema",
+                                "examples": [
+                                    "1977-08-12",
+                                    "1980-11-08"
+                                ]
+                            }
+                        },
+                        "examples": [{
+                            "band": {
+                                "band name": "Motorhead",
+                                "genre": "Rock 'N' Roll",
+                                "band members": [
+                                    "Lemmy Kilmister",
+                                    "Phil Campbell",
+                                    "Mikkey Dee"
+                                ]
+                            },
+                            "album name": "Motorhead",
+                            "album label": "Chriswick Records",
+                            "album release date": "1977-08-12"
+                        },
+                        {
+                            "band": {
+                                "band name": "Motorhead",
+                                "genre": "Rock 'N' Roll",
+                                "band members": [
+                                    "Lemmy Kilmister",
+                                    "Phil Campbell",
+                                    "Mikkey Dee"
+                                ]
+                            },
+                            "album name": "Ace of Spades",
+                            "album label": "Bronze Records",
+                            "album release date": "1980-11-08"
+                        },
+                        {
+                            "band": {
+                                "band name": "Motorhead",
+                                "genre": "Rock 'N' Roll",
+                                "band members": [
+                                    "Lemmy Kilmister",
+                                    "Phil Campbell",
+                                    "Mikkey Dee"
+                                ]
+                            },
+                            "album name": "Ace of Spades",
+                            "album label": "Bronze Records",
+                            "album release date": "1980-11-08"
+                        }]
+                    },
+                    "song name": {
+                        "type": "string",
+                        "title": "The song name Schema",
+                        "examples": [
+                            "Iron Horse / Born to Lose",
+                            "Love Me Like a Reptyle",
+                            "(We Are) the Road Crew"
+                        ]
+                    },
+                    "song length": {
+                        "type": "string",
+                        "title": "The song length Schema",
+                        "examples": [
+                            "05:21:00",
+                            "03:21:00",
+                            "03:10:00"
+                        ]
+                    },
+                    "position on album": {
+                        "type": "integer",
+                        "title": "The position on album Schema",
+                        "examples": [
+                            4,
+                            2,
+                            6
+                        ]
+                    },
+                    "lyrics writers": {
+                        "type": "array",
+                        "title": "The lyrics writers Schema",
+                        "items": {
+                            "type": "string",
+                            "title": "A Schema",
+                            "examples": [
+                                "Lemmy Kilmister"
+                            ]
+                        },
+                        "examples": [
+                            [
+                                "Lemmy Kilmister"],
+                            [
+                                "Lemmy Kilmister"],
+                            [
+                                "Lemmy Kilmister"]
+                        ]
+                    },
+                    "music writers": {
+                        "type": "array",
+                        "title": "The music writers Schema",
+                        "items": {
+                            "type": "string",
+                            "title": "A Schema",
+                            "examples": [
+                                "Phil Taylor",
+                                "Mick Brown",
+                                "Guy 'Tramp' Lawrence",
+                                "Lemmy Kilmister",
+                                "Eddie Clarke"
+                            ]
+                        },
+                        "examples": [
+                            ["Phil Taylor",
+                                "Mick Brown",
+                                "Guy 'Tramp' Lawrence"
+                            ],
+                            ["Lemmy Kilmister",
+                                "Eddie Clarke",
+                                "Phil Taylor"
+                            ],
+                            ["Lemmy Kilmister",
+                                "Eddie Clarke",
+                                "Phil Taylor"
+                            ]
+                        ]
+                    },
+                    "lyrics": {
+                        "type": "string",
+                        "title": "The lyrics Schema",
+                        "examples": [
+                            "\"Iron Horse / Born To Lose\"\n\nHe rides a road, that don't have no end,\nAn open highway, without any bends,\nTramp and his stallion, alone in a dream,\nProud in his colours, as the chromium gleams,\nOn Iron Horse he flies, on Iron Horse he gladly dies,\nIron Horse his wife, Iron Horse his life\n\nHe lives his life, he's living it fast,\nDon't try to hide, when the dice have been cast,\nHe rides a whirlwind, that cuts to the bone,\nLoaded forever, and righteously stoned,\nOn Iron Horse he flies, on Iron Horse he gladly dies,\nIron Horse his wife, Iron Horse his life\n\nYeah, slide it to me!\n\nOne day one day, they'll go for the sun,\nTogether they'll slide, on the eternal run,\nWasted forever, on speed bikes and booze,\nYeah tramp and the brothers, all born to lose,\nOn Iron Horse he flies, on Iron Horse he gladly dies,\nIron Horse his wife, Iron Horse his life ",
+                            "\"Love Me Like A Reptile\"\n\nKnew I had to bite you baby when I first set eyes on you,\nThat moment turned me on, I can't believe it's true,\nI like to watch your body sway,\nI got no choice, I'm gonna twist your tail,\nLove Me Like A Reptile, I'm gonna sink my fangs in you\n\nThunder lizard, stony eye, you got me hypnotised,\nHot tongue breaks in and out and I can't believe my eyes,\nAnd your soft white belly, next to mine,\nScaly baby, see you shine,\nLove Me Like A Reptile, you're murder in disguise,\nBlack mamba, murder in disguise\n\nBaby you're a rattlesnake, you know the way I feel,\nFeel you crawling up my back, you've got no love to steal,\nYou know I've got my eyes on you,\nYou're petrified, gonna stick like glue,\nLove Me Like A Reptile, shock you like an electric eel",
+                            "\"We Are The Road Crew\"\n\nAnother town another place,\nAnother girl, another face,\nAnother truce, another race,\nI'm eating junk, feeling bad,\nAnother night, I'm going mad,\nMy woman's leaving, I feel sad,\nBut I just love the life I lead,\nAnother beer is what I need,\nAnother gig my ears bleed,\nWe are the road crew\n\nAnother town I've left behind,\nAnother drink completely blind,\nAnother hotel I can't find,\nAnother backstage pass for you,\nAnother tube of super glue,\nAnother border to get through,\nI'm driving like a maniac,\nDriving my way to hell and back,\nAnother room a case to pack,\nWe are the road crew\n\nAnother hotel we can burn,\nAnother screw, another turn,\nAnother Europe map to learn,\nAnother truck stop on the way,\nAnother game I learn to play,\nAnother word I learn to say,\nAnother bloody customs post,\nAnother fucking foreign coast,\nAnother set of scars to boast,\nWe are the road crew"
+                        ]
+                    }
+                },
+                "examples": [{
+                    "album": {
+                        "band": {
+                            "band name": "Motorhead",
+                            "genre": "Rock 'N' Roll",
+                            "band members": [
+                                "Lemmy Kilmister",
+                                "Phil Campbell",
+                                "Mikkey Dee"
+                            ]
+                        },
+                        "album name": "Motorhead",
+                        "album label": "Chriswick Records",
+                        "album release date": "1977-08-12"
+                    },
+                    "song name": "Iron Horse / Born to Lose",
+                    "song length": "05:21:00",
+                    "position on album": 4,
+                    "lyrics writers": [
+                        "Lemmy Kilmister"
+                    ],
+                    "music writers": [
+                        "Phil Taylor",
+                        "Mick Brown",
+                        "Guy 'Tramp' Lawrence"
+                    ],
+                    "lyrics": "\"Iron Horse / Born To Lose\"\n\nHe rides a road, that don't have no end,\nAn open highway, without any bends,\nTramp and his stallion, alone in a dream,\nProud in his colours, as the chromium gleams,\nOn Iron Horse he flies, on Iron Horse he gladly dies,\nIron Horse his wife, Iron Horse his life\n\nHe lives his life, he's living it fast,\nDon't try to hide, when the dice have been cast,\nHe rides a whirlwind, that cuts to the bone,\nLoaded forever, and righteously stoned,\nOn Iron Horse he flies, on Iron Horse he gladly dies,\nIron Horse his wife, Iron Horse his life\n\nYeah, slide it to me!\n\nOne day one day, they'll go for the sun,\nTogether they'll slide, on the eternal run,\nWasted forever, on speed bikes and booze,\nYeah tramp and the brothers, all born to lose,\nOn Iron Horse he flies, on Iron Horse he gladly dies,\nIron Horse his wife, Iron Horse his life "
+                },
+                {
+                    "album": {
+                        "band": {
+                            "band name": "Motorhead",
+                            "genre": "Rock 'N' Roll",
+                            "band members": [
+                                "Lemmy Kilmister",
+                                "Phil Campbell",
+                                "Mikkey Dee"
+                            ]
+                        },
+                        "album name": "Ace of Spades",
+                        "album label": "Bronze Records",
+                        "album release date": "1980-11-08"
+                    },
+                    "song name": "Love Me Like a Reptyle",
+                    "song length": "03:21:00",
+                    "position on album": 2,
+                    "lyrics writers": [
+                        "Lemmy Kilmister"
+                    ],
+                    "music writers": [
+                        "Lemmy Kilmister",
+                        "Eddie Clarke",
+                        "Phil Taylor"
+                    ],
+                    "lyrics": "\"Love Me Like A Reptile\"\n\nKnew I had to bite you baby when I first set eyes on you,\nThat moment turned me on, I can't believe it's true,\nI like to watch your body sway,\nI got no choice, I'm gonna twist your tail,\nLove Me Like A Reptile, I'm gonna sink my fangs in you\n\nThunder lizard, stony eye, you got me hypnotised,\nHot tongue breaks in and out and I can't believe my eyes,\nAnd your soft white belly, next to mine,\nScaly baby, see you shine,\nLove Me Like A Reptile, you're murder in disguise,\nBlack mamba, murder in disguise\n\nBaby you're a rattlesnake, you know the way I feel,\nFeel you crawling up my back, you've got no love to steal,\nYou know I've got my eyes on you,\nYou're petrified, gonna stick like glue,\nLove Me Like A Reptile, shock you like an electric eel"
+                },
+                {
+                    "album": {
+                        "band": {
+                            "band name": "Motorhead",
+                            "genre": "Rock 'N' Roll",
+                            "band members": [
+                                "Lemmy Kilmister",
+                                "Phil Campbell",
+                                "Mikkey Dee"
+                            ]
+                        },
+                        "album name": "Ace of Spades",
+                        "album label": "Bronze Records",
+                        "album release date": "1980-11-08"
+                    },
+                    "song name": "(We Are) the Road Crew",
+                    "song length": "03:10:00",
+                    "position on album": 6,
+                    "lyrics writers": [
+                        "Lemmy Kilmister"
+                    ],
+                    "music writers": [
+                        "Lemmy Kilmister",
+                        "Eddie Clarke",
+                        "Phil Taylor"
+                    ],
+                    "lyrics": "\"We Are The Road Crew\"\n\nAnother town another place,\nAnother girl, another face,\nAnother truce, another race,\nI'm eating junk, feeling bad,\nAnother night, I'm going mad,\nMy woman's leaving, I feel sad,\nBut I just love the life I lead,\nAnother beer is what I need,\nAnother gig my ears bleed,\nWe are the road crew\n\nAnother town I've left behind,\nAnother drink completely blind,\nAnother hotel I can't find,\nAnother backstage pass for you,\nAnother tube of super glue,\nAnother border to get through,\nI'm driving like a maniac,\nDriving my way to hell and back,\nAnother room a case to pack,\nWe are the road crew\n\nAnother hotel we can burn,\nAnother screw, another turn,\nAnother Europe map to learn,\nAnother truck stop on the way,\nAnother game I learn to play,\nAnother word I learn to say,\nAnother bloody customs post,\nAnother fucking foreign coast,\nAnother set of scars to boast,\nWe are the road crew"
+                }]
             },
             "examples": [
-                ["Lemmy Kilmister",
-                    "Phil Campbell",
-                    "Mikkey Dee"
-                ]
-            ]
-        },
-        "genre": {
-            "type": "string",
-            "default": "",
-            "title": "The genre Schema",
-            "examples": [
-                "Rock 'N' Roll"
-            ]
-        },
-        "album name": {
-            "type": "string",
-            "default": "",
-            "title": "The album name Schema",
-            "examples": [
-                "Bomber"
-            ]
-        },
-        "album label": {
-            "type": "string",
-            "default": "",
-            "title": "The album label Schema",
-            "examples": [
-                "Bronze Records"
-            ]
-        },
-        "album release date": {
-            "type": "string",
-            "default": "",
-            "title": "The album release date Schema",
-            "examples": [
-                "1979-10-12"
-            ]
-        },
-        "song length": {
-            "type": "string",
-            "default": "",
-            "title": "The song length Schema",
-            "examples": [
-                "03:43:00"
-            ]
-        },
-        "position on album": {
-            "type": "integer",
-            "default": 0,
-            "title": "The position on album Schema",
-            "examples": [
-                10
-            ]
-        },
-        "lyrics writers": {
-            "type": "array",
-            "default": [],
-            "title": "The lyrics writers Schema",
-            "items": {
-                "type": "string",
-                "default": "",
-                "title": "A Schema",
-                "examples": [
-                    "Lemmy Kilmister"
-                ]
-            },
-            "examples": [
-                [
-                    "Lemmy Kilmister"]
-            ]
-        },
-        "music writers": {
-            "type": "array",
-            "default": [],
-            "title": "The music writers Schema",
-            "items": {
-                "type": "string",
-                "title": "A Schema",
-                "examples": [
-                    "Lemmy Kilmister",
-                    "Eddie Clarke",
-                    "Phil Taylor"
-                ]
-            },
-            "examples": [
-                ["Lemmy Kilmister",
-                    "Eddie Clarke",
-                    "Phil Taylor"
-                ]
-            ]
-        },
-        "lyrics": {
-            "type": "string",
-            "default": "",
-            "title": "The lyrics Schema",
-            "examples": [
-                "\\Bomber\\\\n\\nAin't a hope in hell\\nNothin' gonna bring us down\\nThe way we fly\\nFive miles off the ground\\nBecause, we shoot to kill\\nAnd you know we always will\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber\\n\\nScream a thousand miles\\nFeel the black death rising moan\\nFirestorm coming closer\\nNapalm to the bone\\nBecause, you know we do it right\\nA mission every night\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber\\n\\nNo nightfighter\\nGonna stop us getting through\\nSirens make you shiver\\nYou bet my aim is true\\nBecause, we aim to please\\nBring you to your knees\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber "
+                [{
+                    "album": {
+                        "band": {
+                            "band name": "Motorhead",
+                            "genre": "Rock 'N' Roll",
+                            "band members": [
+                                "Lemmy Kilmister",
+                                "Phil Campbell",
+                                "Mikkey Dee"
+                            ]
+                        },
+                        "album name": "Motorhead",
+                        "album label": "Chriswick Records",
+                        "album release date": "1977-08-12"
+                    },
+                    "song name": "Iron Horse / Born to Lose",
+                    "song length": "05:21:00",
+                    "position on album": 4,
+                    "lyrics writers": [
+                        "Lemmy Kilmister"
+                    ],
+                    "music writers": [
+                        "Phil Taylor",
+                        "Mick Brown",
+                        "Guy 'Tramp' Lawrence"
+                    ],
+                    "lyrics": "\"Iron Horse / Born To Lose\"\n\nHe rides a road, that don't have no end,\nAn open highway, without any bends,\nTramp and his stallion, alone in a dream,\nProud in his colours, as the chromium gleams,\nOn Iron Horse he flies, on Iron Horse he gladly dies,\nIron Horse his wife, Iron Horse his life\n\nHe lives his life, he's living it fast,\nDon't try to hide, when the dice have been cast,\nHe rides a whirlwind, that cuts to the bone,\nLoaded forever, and righteously stoned,\nOn Iron Horse he flies, on Iron Horse he gladly dies,\nIron Horse his wife, Iron Horse his life\n\nYeah, slide it to me!\n\nOne day one day, they'll go for the sun,\nTogether they'll slide, on the eternal run,\nWasted forever, on speed bikes and booze,\nYeah tramp and the brothers, all born to lose,\nOn Iron Horse he flies, on Iron Horse he gladly dies,\nIron Horse his wife, Iron Horse his life "
+                },
+                {
+                    "album": {
+                        "band": {
+                            "band name": "Motorhead",
+                            "genre": "Rock 'N' Roll",
+                            "band members": [
+                                "Lemmy Kilmister",
+                                "Phil Campbell",
+                                "Mikkey Dee"
+                            ]
+                        },
+                        "album name": "Ace of Spades",
+                        "album label": "Bronze Records",
+                        "album release date": "1980-11-08"
+                    },
+                    "song name": "Love Me Like a Reptyle",
+                    "song length": "03:21:00",
+                    "position on album": 2,
+                    "lyrics writers": [
+                        "Lemmy Kilmister"
+                    ],
+                    "music writers": [
+                        "Lemmy Kilmister",
+                        "Eddie Clarke",
+                        "Phil Taylor"
+                    ],
+                    "lyrics": "\"Love Me Like A Reptile\"\n\nKnew I had to bite you baby when I first set eyes on you,\nThat moment turned me on, I can't believe it's true,\nI like to watch your body sway,\nI got no choice, I'm gonna twist your tail,\nLove Me Like A Reptile, I'm gonna sink my fangs in you\n\nThunder lizard, stony eye, you got me hypnotised,\nHot tongue breaks in and out and I can't believe my eyes,\nAnd your soft white belly, next to mine,\nScaly baby, see you shine,\nLove Me Like A Reptile, you're murder in disguise,\nBlack mamba, murder in disguise\n\nBaby you're a rattlesnake, you know the way I feel,\nFeel you crawling up my back, you've got no love to steal,\nYou know I've got my eyes on you,\nYou're petrified, gonna stick like glue,\nLove Me Like A Reptile, shock you like an electric eel"
+                },
+                {
+                    "album": {
+                        "band": {
+                            "band name": "Motorhead",
+                            "genre": "Rock 'N' Roll",
+                            "band members": [
+                                "Lemmy Kilmister",
+                                "Phil Campbell",
+                                "Mikkey Dee"
+                            ]
+                        },
+                        "album name": "Ace of Spades",
+                        "album label": "Bronze Records",
+                        "album release date": "1980-11-08"
+                    },
+                    "song name": "(We Are) the Road Crew",
+                    "song length": "03:10:00",
+                    "position on album": 6,
+                    "lyrics writers": [
+                        "Lemmy Kilmister"
+                    ],
+                    "music writers": [
+                        "Lemmy Kilmister",
+                        "Eddie Clarke",
+                        "Phil Taylor"
+                    ],
+                    "lyrics": "\"We Are The Road Crew\"\n\nAnother town another place,\nAnother girl, another face,\nAnother truce, another race,\nI'm eating junk, feeling bad,\nAnother night, I'm going mad,\nMy woman's leaving, I feel sad,\nBut I just love the life I lead,\nAnother beer is what I need,\nAnother gig my ears bleed,\nWe are the road crew\n\nAnother town I've left behind,\nAnother drink completely blind,\nAnother hotel I can't find,\nAnother backstage pass for you,\nAnother tube of super glue,\nAnother border to get through,\nI'm driving like a maniac,\nDriving my way to hell and back,\nAnother room a case to pack,\nWe are the road crew\n\nAnother hotel we can burn,\nAnother screw, another turn,\nAnother Europe map to learn,\nAnother truck stop on the way,\nAnother game I learn to play,\nAnother word I learn to say,\nAnother bloody customs post,\nAnother fucking foreign coast,\nAnother set of scars to boast,\nWe are the road crew"
+                }]
             ]
         }
     },
     "examples": [{
-        "song name": "Bomber",
-        "band name": "Motorhead",
-        "band members": [
-            "Lemmy Kilmister",
-            "Phil Campbell",
-            "Mikkey Dee"
-        ],
-        "genre": "Rock 'N' Roll",
-        "album name": "Bomber",
-        "album label": "Bronze Records",
-        "album release date": "1979-10-12",
-        "song length": "03:43:00",
-        "position on album": 10,
-        "lyrics writers": [
-            "Lemmy Kilmister"
-        ],
-        "music writers": [
-            "Lemmy Kilmister",
-            "Eddie Clarke",
-            "Phil Taylor"
-        ],
-        "lyrics": "\\Bomber\\\\n\\nAin't a hope in hell\\nNothin' gonna bring us down\\nThe way we fly\\nFive miles off the ground\\nBecause, we shoot to kill\\nAnd you know we always will\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber\\n\\nScream a thousand miles\\nFeel the black death rising moan\\nFirestorm coming closer\\nNapalm to the bone\\nBecause, you know we do it right\\nA mission every night\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber\\n\\nNo nightfighter\\nGonna stop us getting through\\nSirens make you shiver\\nYou bet my aim is true\\nBecause, we aim to please\\nBring you to your knees\\nIt's a Bomber\\nIt's a Bomber\\nIt's a Bomber "
+        "podaci": [{
+            "album": {
+                "band": {
+                    "band name": "Motorhead",
+                    "genre": "Rock 'N' Roll",
+                    "band members": [
+                        "Lemmy Kilmister",
+                        "Phil Campbell",
+                        "Mikkey Dee"
+                    ]
+                },
+                "album name": "Motorhead",
+                "album label": "Chriswick Records",
+                "album release date": "1977-08-12"
+            },
+            "song name": "Iron Horse / Born to Lose",
+            "song length": "05:21:00",
+            "position on album": 4,
+            "lyrics writers": [
+                "Lemmy Kilmister"
+            ],
+            "music writers": [
+                "Phil Taylor",
+                "Mick Brown",
+                "Guy 'Tramp' Lawrence"
+            ],
+            "lyrics": "\"Iron Horse / Born To Lose\"\n\nHe rides a road, that don't have no end,\nAn open highway, without any bends,\nTramp and his stallion, alone in a dream,\nProud in his colours, as the chromium gleams,\nOn Iron Horse he flies, on Iron Horse he gladly dies,\nIron Horse his wife, Iron Horse his life\n\nHe lives his life, he's living it fast,\nDon't try to hide, when the dice have been cast,\nHe rides a whirlwind, that cuts to the bone,\nLoaded forever, and righteously stoned,\nOn Iron Horse he flies, on Iron Horse he gladly dies,\nIron Horse his wife, Iron Horse his life\n\nYeah, slide it to me!\n\nOne day one day, they'll go for the sun,\nTogether they'll slide, on the eternal run,\nWasted forever, on speed bikes and booze,\nYeah tramp and the brothers, all born to lose,\nOn Iron Horse he flies, on Iron Horse he gladly dies,\nIron Horse his wife, Iron Horse his life "
+        },
+        {
+            "album": {
+                "band": {
+                    "band name": "Motorhead",
+                    "genre": "Rock 'N' Roll",
+                    "band members": [
+                        "Lemmy Kilmister",
+                        "Phil Campbell",
+                        "Mikkey Dee"
+                    ]
+                },
+                "album name": "Ace of Spades",
+                "album label": "Bronze Records",
+                "album release date": "1980-11-08"
+            },
+            "song name": "Love Me Like a Reptyle",
+            "song length": "03:21:00",
+            "position on album": 2,
+            "lyrics writers": [
+                "Lemmy Kilmister"
+            ],
+            "music writers": [
+                "Lemmy Kilmister",
+                "Eddie Clarke",
+                "Phil Taylor"
+            ],
+            "lyrics": "\"Love Me Like A Reptile\"\n\nKnew I had to bite you baby when I first set eyes on you,\nThat moment turned me on, I can't believe it's true,\nI like to watch your body sway,\nI got no choice, I'm gonna twist your tail,\nLove Me Like A Reptile, I'm gonna sink my fangs in you\n\nThunder lizard, stony eye, you got me hypnotised,\nHot tongue breaks in and out and I can't believe my eyes,\nAnd your soft white belly, next to mine,\nScaly baby, see you shine,\nLove Me Like A Reptile, you're murder in disguise,\nBlack mamba, murder in disguise\n\nBaby you're a rattlesnake, you know the way I feel,\nFeel you crawling up my back, you've got no love to steal,\nYou know I've got my eyes on you,\nYou're petrified, gonna stick like glue,\nLove Me Like A Reptile, shock you like an electric eel"
+        },
+        {
+            "album": {
+                "band": {
+                    "band name": "Motorhead",
+                    "genre": "Rock 'N' Roll",
+                    "band members": [
+                        "Lemmy Kilmister",
+                        "Phil Campbell",
+                        "Mikkey Dee"
+                    ]
+                },
+                "album name": "Ace of Spades",
+                "album label": "Bronze Records",
+                "album release date": "1980-11-08"
+            },
+            "song name": "(We Are) the Road Crew",
+            "song length": "03:10:00",
+            "position on album": 6,
+            "lyrics writers": [
+                "Lemmy Kilmister"
+            ],
+            "music writers": [
+                "Lemmy Kilmister",
+                "Eddie Clarke",
+                "Phil Taylor"
+            ],
+            "lyrics": "\"We Are The Road Crew\"\n\nAnother town another place,\nAnother girl, another face,\nAnother truce, another race,\nI'm eating junk, feeling bad,\nAnother night, I'm going mad,\nMy woman's leaving, I feel sad,\nBut I just love the life I lead,\nAnother beer is what I need,\nAnother gig my ears bleed,\nWe are the road crew\n\nAnother town I've left behind,\nAnother drink completely blind,\nAnother hotel I can't find,\nAnother backstage pass for you,\nAnother tube of super glue,\nAnother border to get through,\nI'm driving like a maniac,\nDriving my way to hell and back,\nAnother room a case to pack,\nWe are the road crew\n\nAnother hotel we can burn,\nAnother screw, another turn,\nAnother Europe map to learn,\nAnother truck stop on the way,\nAnother game I learn to play,\nAnother word I learn to say,\nAnother bloody customs post,\nAnother fucking foreign coast,\nAnother set of scars to boast,\nWe are the road crew"
+        }]
     }]
 }
