@@ -25,5 +25,4 @@ Repository for files related to FER3 course 210657 Open Computing
 <p>Data sources: <br/> wikipedia.org <br/> azlyrics.com <br/> genius.com </p>
 <p>License: Creative Commons Zero v1.0 Universal</p>
 <p>Docker repository: https://hub.docker.com/repository/docker/vuci359/fer3_opencomputing_lab_exam/general</p>
-<p>Docker image for testing: vuci359/fer3_opencomputing_lab_exam:baza</p>
 <p>Additional files are located in folder lab1. Removal of redundant files is planned for lab2.</p>
