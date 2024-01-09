@@ -10,6 +10,7 @@ namespace openComputingLab.Models;
 [JsonObject("album")]
 public class Album {
    // [JsonIgnore]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Key, Required]
     public int ident {
         get;

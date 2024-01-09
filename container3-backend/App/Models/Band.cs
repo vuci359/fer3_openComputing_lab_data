@@ -10,6 +10,7 @@ namespace openComputingLab.Models;
 public class Band {
 
    // [JsonIgnore]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Key, Required]
     public int ident {
         get;

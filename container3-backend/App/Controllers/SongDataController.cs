@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace openComputingLab.Controllers;
 
 [ApiController]
-[Route("api/[controller]/[action]")]
+[Route("api/[controller]")]
 [Produces("application/json")]
 [EnableCors]
 
