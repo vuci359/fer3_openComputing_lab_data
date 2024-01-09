@@ -1,13 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using openComputingLab.Data;
-using Newtonsoft.Json;
-using System.Text.Json.Nodes;
 using Microsoft.AspNetCore.Cors;
-using openComputingLab.Models;
 using Microsoft.EntityFrameworkCore;
 
-//using Newtonsoft.Json;
-
+using openComputingLab.Data;
+using openComputingLab.Models;
+using openComputingLab.DTO;
 namespace openComputingLab.Controllers;
 
 [ApiController]
@@ -49,12 +46,10 @@ public class AlbumController : ControllerBase
 
     [HttpPost]
     [ActionName("PostData")]
-    public IActionResult PostData([FromBody] Album album ){
+    public IActionResult PostData([FromBody] AlbumDTO dto ){
 
-        try{var albumExist = _dbContext.Albums.Any(e => e.ident == album.ident);
-            if (albumExist == true){
-                return Ok(new { Message = "Album already created!" });                    
-            }
+        try{
+            Album album = new Album(dto);
             _dbContext.Add(album);
             _dbContext.SaveChanges();
             return Ok(new { Message = "Album created!" });

@@ -1,14 +1,22 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-//using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 
-
+using openComputingLab.DTO;
 namespace openComputingLab.Models;
 
 [Table("Album")]
 [JsonObject("album")]
 public class Album {
+
+    public Album(){}
+    public Album(AlbumDTO dto){
+        Bandident = dto.Bandident;
+        name = dto.name;
+        label = dto.label;
+        date_released = dto.date_released;
+    }
+
    // [JsonIgnore]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Key, Required]

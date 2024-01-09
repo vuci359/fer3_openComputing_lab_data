@@ -1,13 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using openComputingLab.Data;
-using Newtonsoft.Json;
-using System.Text.Json.Nodes;
 using Microsoft.AspNetCore.Cors;
-using openComputingLab.Models;
 using Microsoft.EntityFrameworkCore;
 
-//using Newtonsoft.Json;
-
+using openComputingLab.Data;
+using openComputingLab.Models;
+using openComputingLab.DTO;
 namespace openComputingLab.Controllers;
 
 [ApiController]
@@ -49,12 +46,9 @@ public class BandController : ControllerBase
 
     [HttpPost]
     [ActionName("PostData")]
-    public IActionResult PostData([FromBody] Band band ){
+    public IActionResult PostData([FromBody] BandDTO dto ){
         try{
-            var bandExist = _dbContext.Bands.Any(e => e.ident == band.ident);
-            if (bandExist == true){
-                return Ok(new { Message = "Band already created!" });                    
-            }
+            Band band = new Band(dto);
             _dbContext.Add(band);
             _dbContext.SaveChanges();
             return Ok(new { Message = "Band created!" });

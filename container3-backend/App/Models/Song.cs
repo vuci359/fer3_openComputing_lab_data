@@ -2,12 +2,22 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Newtonsoft.Json;
 
-
+using openComputingLab.DTO;
 namespace openComputingLab.Models;
 
 [Table("Song")]
 [JsonObject("song")]
 public class Song {
+    public Song(){}
+    public Song(SongDTO dto){
+        Albumident = dto.Albumident;
+        name = dto.name;
+        length = dto.length;
+        no_on_album = dto.no_on_album;
+        lyrics_writers = dto.lyrics_writers;
+        music_writers = dto.music_writers;
+        lyrics = dto.lyrics;
+    }
 
   //  [JsonIgnore]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

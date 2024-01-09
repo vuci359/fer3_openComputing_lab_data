@@ -1,14 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using openComputingLab.Data;
-using Newtonsoft.Json;
-using System.Text.Json.Nodes;
 using Microsoft.AspNetCore.Cors;
-using openComputingLab.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks.Sources;
 
-//using Newtonsoft.Json;
-
+using openComputingLab.Data;
+using openComputingLab.Models;
+using openComputingLab.DTO;
 namespace openComputingLab.Controllers;
 
 [ApiController]
@@ -50,12 +46,9 @@ public class SongController : ControllerBase
 
     [HttpPost]
     [ActionName("PostData")]
-    public IActionResult PostData([FromBody] Song song ){
+    public IActionResult PostData([FromBody] SongDTO dto ){
         try{
-            var songExist = _dbContext.Songs.Any(e => e.ident == song.ident);
-            if (songExist == true){
-                return Ok(new { Message = "Song already created!" });                    
-            }
+            Song song = new Song(dto);
             _dbContext.Add(song);
             _dbContext.SaveChanges();
             return Ok(new { Message = "Song created!" });
