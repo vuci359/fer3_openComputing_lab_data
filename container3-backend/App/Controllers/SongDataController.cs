@@ -35,7 +35,7 @@ public class SongDataController : ControllerBase
         }
     }
 
-    [HttpGet]
+    [HttpGet("{id}")]
     [ActionName("GetDataById")]
     public IActionResult GetDataById(int ident){
         try{
@@ -47,7 +47,7 @@ public class SongDataController : ControllerBase
         }
     }
 
-    [HttpGet]
+    [HttpGet("{stupac, parameter}")]
     [ActionName("GetStructuredData")]
     public IActionResult GetStructuredData(int ? stupac = null, string ? parameter = null){
         try{

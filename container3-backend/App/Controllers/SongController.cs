@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.EntityFrameworkCore;
+using Swashbuckle.AspNetCore.Annotations;
+using static Microsoft.AspNetCore.Http.StatusCodes;
 
 using openComputingLab.Data;
 using openComputingLab.Models;
@@ -22,6 +24,8 @@ public class SongController : ControllerBase
     }
     [HttpGet]
     [ActionName("GetData")]
+    [SwaggerResponse(Status200OK)]
+    [SwaggerResponse(Status404NotFound)]
     public IActionResult GetData(){
         try{
             return Ok(_dbContext.Songs.ToArray());
@@ -32,6 +36,8 @@ public class SongController : ControllerBase
 
     [HttpGet("{id}")]
     [ActionName("GetDataById")]
+    [SwaggerResponse(Status200OK)]
+    [SwaggerResponse(Status404NotFound)]
     public IActionResult GetDataById(int ? id = null){
         try{
             var song = _dbContext.Songs.Find(id);
@@ -46,12 +52,14 @@ public class SongController : ControllerBase
 
     [HttpPost]
     [ActionName("PostData")]
+    [SwaggerResponse(Status200OK)]
+    [SwaggerResponse(Status404NotFound)]
     public IActionResult PostData([FromBody] SongDTO dto ){
         try{
             Song song = new Song(dto);
             _dbContext.Add(song);
             _dbContext.SaveChanges();
-            return Ok(new { Message = "Song created!" });
+            return Ok(new { Message = "Song created!", song});
         }catch(Exception e){
             if (e is KeyNotFoundException){
                 return NotFound(new {Message = e.Message});
@@ -62,12 +70,14 @@ public class SongController : ControllerBase
 
     [HttpPut("{id}")]
     [ActionName("UpdateData")]
+    [SwaggerResponse(Status200OK)]
+    [SwaggerResponse(Status404NotFound)]
     public IActionResult Update([FromBody] Song song){
         try{   
             _dbContext.Songs.Attach(song);
             _dbContext.Entry(song).State = EntityState.Modified;        
             _dbContext.SaveChanges();
-            return Ok(new { Message = "Song updated!" });
+            return Ok(new { Message = "Song updated!", song});
         }catch{
             return NotFound(new {Message = "Song NOT updated!"});
         }
@@ -75,6 +85,8 @@ public class SongController : ControllerBase
 
     [HttpDelete("{id}")]
     [ActionName("DeleteData")]
+    [SwaggerResponse(Status200OK)]
+    [SwaggerResponse(Status404NotFound)]
     public IActionResult Delete(int id){
         try{
             var song = _dbContext.Songs.Find(id);

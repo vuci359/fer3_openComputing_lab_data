@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.EntityFrameworkCore;
+using Swashbuckle.AspNetCore.Annotations;
+using static Microsoft.AspNetCore.Http.StatusCodes;
 
 using openComputingLab.Data;
 using openComputingLab.Models;
@@ -22,16 +24,20 @@ public class AlbumController : ControllerBase
     }
     [HttpGet]
     [ActionName("GetData")]
+    [SwaggerResponse(Status200OK)]
+    [SwaggerResponse(Status404NotFound)]
     public IActionResult GetData(){
         try{
             return Ok(_dbContext.Albums.ToArray());
         }catch(Exception e){
-            return NotFound(new {Message = "No albums found!"});
+            return NotFound();
         }
     }
 
     [HttpGet("{id}")]
     [ActionName("GetDataById")]
+    [SwaggerResponse(Status200OK)]
+    [SwaggerResponse(Status404NotFound)]
     public IActionResult GetDataById(int ? id = null){
         try{
             var album = _dbContext.Albums.Find(id);
@@ -40,39 +46,45 @@ public class AlbumController : ControllerBase
             }
             return Ok(album);
         }catch(Exception e){
-            return NotFound(new {Message = "Album NOT found!"});
+            return NotFound();
         }
     }
 
     [HttpPost]
     [ActionName("PostData")]
+    [SwaggerResponse(Status200OK)]
+    [SwaggerResponse(Status404NotFound)]
     public IActionResult PostData([FromBody] AlbumDTO dto ){
 
         try{
             Album album = new Album(dto);
             _dbContext.Add(album);
             _dbContext.SaveChanges();
-            return Ok(new { Message = "Album created!" });
+            return Ok();
         }catch(Exception e){
-            return NotFound(new {Message = "Album NOT created!"});
+            return NotFound();
         }
     }
 
     [HttpPut("{id}")]
     [ActionName("UpdateData")]
+    [SwaggerResponse(Status200OK)]
+    [SwaggerResponse(Status404NotFound)]
     public IActionResult Update([FromBody] Album album){
         try{   
             _dbContext.Albums.Attach(album);
             _dbContext.Entry(album).State = EntityState.Modified;        
             _dbContext.SaveChanges();
-            return Ok(new { Message = "Album updated!" });
+            return Ok();
         }catch{
-            return NotFound(new {Message = "Album NOT updated!"});
+            return NotFound();
         }
     }
 
     [HttpDelete("{id}")]
     [ActionName("DeleteData")]
+    [SwaggerResponse(Status200OK)]
+    [SwaggerResponse(Status404NotFound)]
     public IActionResult Delete(int id){
         try{
             var album = _dbContext.Albums.Find(id);
@@ -81,12 +93,12 @@ public class AlbumController : ControllerBase
             }
             _dbContext.Albums.Remove(album);
             _dbContext.SaveChanges();
-            return Ok(new { Message = "Album deleted!" });
+            return Ok();
         }catch(Exception e){
             if (e is KeyNotFoundException){
-                return NotFound(new {Message = e.Message});
+                return NotFound();
             }
-            return NotFound(new {Message = "Album NOT deleted!"});
+            return NotFound();
         }
         
     }
