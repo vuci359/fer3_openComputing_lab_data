@@ -141,21 +141,13 @@ $('#gumb').on('click', function () {
 } );
 
 // output: {"success":"true"}
-async function getData(stupac = null, parameter = null){
+async function getData(stupac = null, parameter = null, csv_req = false){
         console.log(stupac, parameter);
-        var link = 'http://localhost:8087' + '/api/SongData/GetStructuredData';
-        if(stupac != null || parameter != null){
-            link = link + '?';
-        }
-        if(stupac != null){
-            link = link + 'stupac='+stupac;
-        }
-        if(stupac != null && parameter != null){
-            link = link + '&';
-        }
-        if(parameter != null){
-            link = link + 'parameter='+parameter;
-        }
+        if(stupac == null) stupac = '';
+        if(parameter == null) parameter = '';
+        var link = 'http://localhost:80' + '/api/SongData/ByParameters?stupac='+stupac+'&parameter='+parameter+'&csvRequired='+csv_req;
+
+        
         return await fetch(link,{
             method: 'GET',
             mode:'cors',

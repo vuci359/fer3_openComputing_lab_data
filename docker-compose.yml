@@ -19,7 +19,7 @@ services:
   ports: 
    - "8087:8080"
   networks:
-   - database-to-dotnet-network
+    - database-to-dotnet-network
   depends_on:
     opencomputingLabDatabase:
       condition: service_healthy

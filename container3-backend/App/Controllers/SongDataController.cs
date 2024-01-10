@@ -37,9 +37,9 @@ public class SongDataController : ControllerBase
 
     [HttpGet("{id}")]
     [ActionName("GetDataById")]
-    public IActionResult GetDataById(int ident){
+    public IActionResult GetDataById(int ? id = null){
         try{
-            return Ok(_dbContext.Songs.Where(a => a.ident.Equals(ident)).Include(s => s.Album).ThenInclude(a => a.Band));
+            return Ok(_dbContext.Songs.Where(a => a.ident.Equals(id)).Include(s => s.Album).ThenInclude(a => a.Band));
 
         }catch(Exception e){
            // Console.WriteLine(e.StackTrace);
@@ -47,14 +47,17 @@ public class SongDataController : ControllerBase
         }
     }
 
-    [HttpGet("{stupac, parameter}")]
+    [HttpGet]
+    [Route("ByParameters")]
     [ActionName("GetStructuredData")]
-    public IActionResult GetStructuredData(int ? stupac = null, string ? parameter = null){
+    public IActionResult GetStructuredData(int ? stupac = null, string ? parameter = null, bool csvRequired = false){
         try{
             Microsoft.EntityFrameworkCore.Query.IIncludableQueryable<Song, Band?>? SongData;
             var song_filter = PredicateBuilder.False<Song>();
             int start = 0;
             int kraj=11;
+            if(stupac == -1) stupac = null;
+            if(parameter == "") parameter = null;
             if(stupac != null){
                 start = stupac.Value;
                 kraj = stupac.Value;
@@ -129,7 +132,14 @@ public class SongDataController : ControllerBase
 
                 });
 
-            return Ok(JsonValue.Parse("{\"podaci\":"+json_string+"}"));
+            var return_data = JsonValue.Parse("{\"podaci\":"+json_string+"}");
+            if(!csvRequired){
+                return Ok(return_data);
+            }
+
+            //treba parsirati JSON u CSV
+            var csv_data = return_data;
+            return Ok(csv_data);
 
         }catch(Exception e){
            // Console.WriteLine(e.StackTrace);
