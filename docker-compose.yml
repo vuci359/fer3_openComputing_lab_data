@@ -6,7 +6,7 @@ networks:
 
 services:
  openComputingLabFrontend:
-  image: 'vuci359/fer3_opencomputing_lab_exam:frontend_v3'
+  image: 'vuci359/fer3_opencomputing_lab_exam:frontend_v4'
   container_name: opencomputingLabFrontend
   ports:
    - "80:80"
@@ -14,7 +14,7 @@ services:
    - database-to-dotnet-network
 
  opencomputingLabBackend:
-  image: 'vuci359/fer3_opencomputing_lab_exam:backend_v3'
+  image: 'vuci359/fer3_opencomputing_lab_exam:backend_v4'
   container_name: opencomputingLabBackend
   ports: 
    - "8087:8080"
@@ -27,7 +27,7 @@ services:
    - ASPNETCORE_URLS=http://+:8080/
  
  opencomputingLabDatabase:
-  image: 'vuci359/fer3_opencomputing_lab_exam:database_v3'
+  image: 'vuci359/fer3_opencomputing_lab_exam:database_v4'
   container_name: opencomputingLabDatabase
   environment:
    - POSTGRES_USER=postgres
