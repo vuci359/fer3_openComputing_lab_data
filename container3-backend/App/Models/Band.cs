@@ -35,7 +35,6 @@ public class Band {
         get;
         set;
     }
-    [JsonIgnore]
     public int ? year_founded {
         get;
         set;

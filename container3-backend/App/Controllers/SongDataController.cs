@@ -123,6 +123,7 @@ public class SongDataController : ControllerBase
             resolver.ignoreProperty("Bandident");
             resolver.ignoreProperty("ident");
             resolver.ignoreProperty("Albumident");
+            resolver.ignoreProperty("year_founded");
 
             string json_string = JsonConvert.SerializeObject(SongData.ToList(), new JsonSerializerSettings
                 {
