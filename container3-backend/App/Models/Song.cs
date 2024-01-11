@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Authorization;
 using Newtonsoft.Json;
 
 using openComputingLab.DTO;
@@ -7,6 +8,7 @@ namespace openComputingLab.Models;
 
 [Table("Song")]
 [JsonObject("song")]
+[Authorize]
 public class Song {
     public Song(){}
     public Song(SongDTO dto){
