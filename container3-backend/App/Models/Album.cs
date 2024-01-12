@@ -21,7 +21,7 @@ public class Album {
 
     [JsonObject("@context")]
     public class Context{
-        [JsonProperty("date_released")]
+        [JsonProperty("album release date")]
         public string release_date{get; set;} = "https://schema.org/datePublished";
         [JsonProperty("name")]
         public string album_name{get; set;} = "https://schema.org/name";
