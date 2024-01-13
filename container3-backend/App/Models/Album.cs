@@ -8,7 +8,7 @@ namespace openComputingLab.Models;
 
 [Table("Album")]
 [JsonObject("album")]
-[Authorize]
+//[Authorize]
 public class Album {
 
     public Album(){}

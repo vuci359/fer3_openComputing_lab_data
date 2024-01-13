@@ -15,7 +15,7 @@ builder.Services.AddSwaggerGen();
 
 //veze prema bazi podataka...
 builder.Services.AddDbContext <AppDbContext> (o => o.UseNpgsql(builder.Configuration.GetConnectionString("Ef_Postgres_Db")));
-
+/*
 //oauth2 openID connect
 builder.Services.AddAuthentication(options => {
         
@@ -59,7 +59,7 @@ builder.Services.AddAuthentication(options => {
     builder.Services.AddAuthorization();
     builder.Services.AddRazorPages();
 
-
+*/
 
 
 var app = builder.Build();
