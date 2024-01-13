@@ -5,7 +5,7 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/Album/GetData": {
+    "/api/Album": {
       "get": {
         "tags": [
           "Album"
@@ -13,11 +13,46 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Album"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlbumDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlbumDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlbumDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       }
     },
-    "/api/Album/GetDataById/{id}": {
+    "/api/Album/{id}": {
       "get": {
         "tags": [
           "Album"
@@ -36,42 +71,12 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
-      }
-    },
-    "/api/Album/PostData": {
-      "post": {
-        "tags": [
-          "Album"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Album"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Album"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Album"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
-    "/api/Album/UpdateData/{id}": {
+      },
       "put": {
         "tags": [
           "Album"
@@ -108,11 +113,12 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
-      }
-    },
-    "/api/Album/DeleteData/{id}": {
+      },
       "delete": {
         "tags": [
           "Album"
@@ -131,11 +137,14 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       }
     },
-    "/api/Band/GetData": {
+    "/api/Band": {
       "get": {
         "tags": [
           "Band"
@@ -143,11 +152,46 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Band"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BandDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BandDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BandDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       }
     },
-    "/api/Band/GetDataById/{id}": {
+    "/api/Band/{id}": {
       "get": {
         "tags": [
           "Band"
@@ -166,42 +210,12 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
-      }
-    },
-    "/api/Band/PostData": {
-      "post": {
-        "tags": [
-          "Band"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Band"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Band"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Band"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
-    "/api/Band/UpdateData/{id}": {
+      },
       "put": {
         "tags": [
           "Band"
@@ -238,11 +252,12 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
-      }
-    },
-    "/api/Band/DeleteData/{id}": {
+      },
       "delete": {
         "tags": [
           "Band"
@@ -261,11 +276,14 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       }
     },
-    "/api/Song/GetData": {
+    "/api/Song": {
       "get": {
         "tags": [
           "Song"
@@ -273,11 +291,46 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Song"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SongDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SongDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SongDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       }
     },
-    "/api/Song/GetDataById/{id}": {
+    "/api/Song/{id}": {
       "get": {
         "tags": [
           "Song"
@@ -296,42 +349,12 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
-      }
-    },
-    "/api/Song/PostData": {
-      "post": {
-        "tags": [
-          "Song"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Song"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Song"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Song"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
-    "/api/Song/UpdateData/{id}": {
+      },
       "put": {
         "tags": [
           "Song"
@@ -368,11 +391,12 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
-      }
-    },
-    "/api/Song/DeleteData/{id}": {
+      },
       "delete": {
         "tags": [
           "Song"
@@ -391,11 +415,14 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       }
     },
-    "/api/SongData/GetData": {
+    "/api/SongData": {
       "get": {
         "tags": [
           "SongData"
@@ -407,15 +434,16 @@
         }
       }
     },
-    "/api/SongData/GetDataById": {
+    "/api/SongData/{id}": {
       "get": {
         "tags": [
           "SongData"
         ],
         "parameters": [
           {
-            "name": "ident",
-            "in": "query",
+            "name": "id",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -429,7 +457,7 @@
         }
       }
     },
-    "/api/SongData/GetStructuredData": {
+    "/api/SongData/ByParameters": {
       "get": {
         "tags": [
           "SongData"
@@ -448,6 +476,14 @@
             "in": "query",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "csvRequired",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
             }
           }
         ],
@@ -468,6 +504,9 @@
         ],
         "type": "object",
         "properties": {
+          "context": {
+            "$ref": "#/components/schemas/AlbumContext"
+          },
           "ident": {
             "type": "integer",
             "format": "int32"
@@ -488,7 +527,49 @@
             "nullable": true
           },
           "date_released": {
-            "$ref": "#/components/schemas/DateOnly"
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlbumContext": {
+        "type": "object",
+        "properties": {
+          "release_date": {
+            "type": "string",
+            "nullable": true
+          },
+          "album_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "album_label": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlbumDTO": {
+        "type": "object",
+        "properties": {
+          "bandident": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "label": {
+            "type": "string",
+            "nullable": true
+          },
+          "date_released": {
+            "type": "string",
+            "format": "date"
           }
         },
         "additionalProperties": false
@@ -501,11 +582,15 @@
         ],
         "type": "object",
         "properties": {
+          "context": {
+            "$ref": "#/components/schemas/BandContext"
+          },
           "ident": {
             "type": "integer",
             "format": "int32"
           },
           "band_name": {
+            "minLength": 1,
             "type": "string"
           },
           "genre": {
@@ -526,49 +611,45 @@
         },
         "additionalProperties": false
       },
-      "DateOnly": {
+      "BandContext": {
         "type": "object",
         "properties": {
-          "year": {
-            "type": "integer",
-            "format": "int32"
+          "band_ganre": {
+            "type": "string",
+            "nullable": true
           },
-          "month": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "day": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "dayOfWeek": {
-            "$ref": "#/components/schemas/DayOfWeek"
-          },
-          "dayOfYear": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
-          },
-          "dayNumber": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
+          "band_name": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "DayOfWeek": {
-        "enum": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
-        ],
-        "type": "integer",
-        "format": "int32"
+      "BandDTO": {
+        "type": "object",
+        "properties": {
+          "band_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "genre": {
+            "type": "string",
+            "nullable": true
+          },
+          "year_founded": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "members": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
       },
       "Song": {
         "required": [
@@ -577,6 +658,9 @@
         ],
         "type": "object",
         "properties": {
+          "context": {
+            "$ref": "#/components/schemas/SongContext"
+          },
           "ident": {
             "type": "integer",
             "format": "int32"
@@ -620,6 +704,64 @@
         },
         "additionalProperties": false
       },
+      "SongContext": {
+        "type": "object",
+        "properties": {
+          "song_length": {
+            "type": "string",
+            "nullable": true
+          },
+          "song_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "song_lyrics": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SongDTO": {
+        "type": "object",
+        "properties": {
+          "albumident": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "length": {
+            "$ref": "#/components/schemas/TimeSpan"
+          },
+          "no_on_album": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lyrics_writers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "music_writers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "lyrics": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "TimeSpan": {
         "type": "object",
         "properties": {
@@ -629,19 +771,23 @@
           },
           "days": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "readOnly": true
           },
           "hours": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "readOnly": true
           },
           "milliseconds": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "readOnly": true
           },
           "microseconds": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "readOnly": true
           },
           "nanoseconds": {
             "type": "integer",
@@ -650,11 +796,13 @@
           },
           "minutes": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "readOnly": true
           },
           "seconds": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "readOnly": true
           },
           "totalDays": {
             "type": "number",
