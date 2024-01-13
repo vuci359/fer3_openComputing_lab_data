@@ -1,5 +1,5 @@
 let auth0Client = null;
-const fetchAuthConfig = () => fetch("/auth_config.json");
+const fetchAuthConfig = () => fetch("./auth_config.json");
 
 const configureClient = async () => {
     const response = await fetchAuthConfig();
@@ -11,19 +11,7 @@ const configureClient = async () => {
     });
 };
 
-window.onload = async () => {
-    await configureClient();
-}
-
-window.onload = async () => {
-    await configureClient();
-  
-    // NEW - update the UI state
-    updateUI();
-  };
-  
-  // NEW
-  const updateUI = async () => {
+const updateUI = async () => {
     const isAuthenticated = await auth0Client.isAuthenticated();
   
     document.getElementById("btn-logout").disabled = !isAuthenticated;
@@ -54,8 +42,16 @@ window.onload = async () => {
     });
   };
 
-  window.onload = async () => {
+  const logout = () => {
+    auth0Client.logout({
+      logoutParams: {
+        returnTo: window.location.origin
+      }
+    });
+  };
 
+  window.onload = async () => {
+    await configureClient();
     // .. code ommited for brevity
   
     updateUI();
@@ -81,10 +77,3 @@ window.onload = async () => {
     }
   };
 
-  const logout = () => {
-    auth0Client.logout({
-      logoutParams: {
-        returnTo: window.location.origin
-      }
-    });
-  };
