@@ -20,13 +20,18 @@ const updateUI = async () => {
     if (isAuthenticated) {
         document.getElementById("gated-content").classList.remove("hidden");
     
-        document.getElementById(
-          "ipt-access-token"
-        ).innerHTML = await auth0Client.getTokenSilently();
-    
-        document.getElementById("ipt-user-profile").textContent = JSON.stringify(
-          await auth0Client.getUser()
-        );
+       // document.getElementById("ipt-access-token").innerHTML = await auth0Client.getTokenSilently();
+          
+        let user = await auth0Client.getUser();
+        //document.getElementById("ipt-user-profile").textContent = JSON.stringify(user);
+        document.getElementById("nickname").textContent = user.nickname;
+        document.getElementById("name").textContent = user.name;
+        document.getElementById("picture").src = user.picture;
+        document.getElementById("updated_at").textContent = user.updated_at;
+        document.getElementById("email").textContent = user.email;
+        document.getElementById("email_verified").textContent = user.email_verified;
+        document.getElementById("sub").textContent = user.sub;
+
     
       } else {
         document.getElementById("gated-content").classList.add("hidden");
@@ -53,7 +58,6 @@ const updateUI = async () => {
   window.onload = async () => {
     await configureClient();
     // .. code ommited for brevity
-  
     updateUI();
   
     const isAuthenticated = await auth0Client.isAuthenticated();

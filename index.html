@@ -1,15 +1,70 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8"/>
-
+    <!--<script type="text/javascript" charset="utf8" src="./auth0-spa-js.production.js"></script>-->
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+    <script type="text/javascript" charset="utf8" src="./app.js"></script>
+    <link rel="stylesheet" type="text/css" href="./main.css" />
 </head>
 <body>
     <h1>Index</h1>
     <br/>
-    <a href="./heavy_metal_songs_data.json">JSON data</a>
-    <br/>
-    <a href="./heavy_metal_songs_data.csv">CSV data</a>
-    <br/>
     <a href="./datatable.html">Datatable</a>
+    <br/>
+    <h2>SPA Authentication Sample</h2>
+    <p>Welcome to our page!</p>
+    <button id="btn-login" disabled="true" onclick="login()">Log in</button>
+    <button id="btn-logout" disabled="true" onclick="logout()">Log out</button>
 
+    <div class="hidden" id="gated-content">
+        <p>
+          You're seeing this content because you're currently
+          <strong>logged in</strong>.
+        </p>
+      <!--  <label>
+          Access token:
+          <pre id="ipt-access-token"></pre>
+        </label>
+        <label>
+          User profile:
+          <pre id="ipt-user-profile"></pre>
+        </label>
+      -->
+        <table>
+          <tr>
+            <td>nickname</td>
+            <td id="nickname"></td>
+          </tr>
+          <tr>
+            <td>name</td>
+            <td id="name"></td>
+          </tr>
+          <tr>
+            <td>picture</td>
+            <td>
+              <img id="picture"/>
+            </td>
+          </tr>
+          <tr>
+            <td>updated at</td>
+            <td id="updated_at"></td>
+          </tr>
+          <tr>
+            <td>email</td>
+            <td id="email"></td>
+          </tr>
+          <tr>
+            <td>email verified</td>
+            <td id="email_verified"></td>
+          </tr>
+          <tr>
+            <td>sub</td>
+            <td id="sub"></td>
+          </tr>
+        </table>
+        <a href="./heavy_metal_songs_data.json">JSON data</a>
+        <br/>
+        <a href="./heavy_metal_songs_data.csv">CSV data</a>
+        <br/>
+      </div>
 </body>
