@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
 using Newtonsoft.Json;
 
 using openComputingLab.DTO;
@@ -20,15 +21,13 @@ public class Song {
         music_writers = dto.music_writers;
         lyrics = dto.lyrics;
     }
-    [JsonObject("@context")]
-    public class Context{
-        [JsonProperty("song length")]
-        public string song_length{get; set;} = "https://schema.org/duration";
-        [JsonProperty("song name")]
-        public string song_name{get; set;} = "https://schema.org/name";
-        [JsonProperty("lyrics")]
-        public string song_lyrics{get; set;} = "https://schema.org/lyrics";
-    }
+
+    [NotMapped]
+    [JsonProperty("@context")]
+    public SongContext @context{
+        get;
+        set;
+    } = new SongContext();
 
   //  [JsonIgnore]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

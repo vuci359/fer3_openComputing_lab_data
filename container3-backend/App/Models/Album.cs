@@ -19,15 +19,12 @@ public class Album {
         date_released = dto.date_released;
     }
 
-    [JsonObject("@context")]
-    public class Context{
-        [JsonProperty("album release date")]
-        public string release_date{get; set;} = "https://schema.org/datePublished";
-        [JsonProperty("name")]
-        public string album_name{get; set;} = "https://schema.org/name";
-        [JsonProperty("label")]
-        public string album_label{get; set;} = "https://schema.org/publisher";
-    }
+    [NotMapped]
+    [JsonProperty("@context")]
+    public AlbumContext  @context {
+        get;
+        set;
+    } = new AlbumContext();
 
    // [JsonIgnore]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
