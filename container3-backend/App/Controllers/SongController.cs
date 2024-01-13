@@ -1,18 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
-using openComputingLab.Data;
-using Newtonsoft.Json;
-using System.Text.Json.Nodes;
 using Microsoft.AspNetCore.Cors;
-using openComputingLab.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks.Sources;
+using Swashbuckle.AspNetCore.Annotations;
+using static Microsoft.AspNetCore.Http.StatusCodes;
 
-//using Newtonsoft.Json;
-
+using openComputingLab.Data;
+using openComputingLab.Models;
+using openComputingLab.DTO;
 namespace openComputingLab.Controllers;
 
 [ApiController]
-[Route("api/[controller]/[action]")]
+[Route("api/[controller]")]
 [Produces("application/json")]
 [EnableCors]
 
@@ -26,6 +24,8 @@ public class SongController : ControllerBase
     }
     [HttpGet]
     [ActionName("GetData")]
+    [SwaggerResponse(Status200OK)]
+    [SwaggerResponse(Status404NotFound)]
     public IActionResult GetData(){
         try{
             return Ok(_dbContext.Songs.ToArray());
@@ -36,6 +36,8 @@ public class SongController : ControllerBase
 
     [HttpGet("{id}")]
     [ActionName("GetDataById")]
+    [SwaggerResponse(Status200OK)]
+    [SwaggerResponse(Status404NotFound)]
     public IActionResult GetDataById(int ? id = null){
         try{
             var song = _dbContext.Songs.Find(id);
@@ -50,15 +52,14 @@ public class SongController : ControllerBase
 
     [HttpPost]
     [ActionName("PostData")]
-    public IActionResult PostData([FromBody] Song song ){
+    [SwaggerResponse(Status200OK)]
+    [SwaggerResponse(Status404NotFound)]
+    public IActionResult PostData([FromBody] SongDTO dto ){
         try{
-            var songExist = _dbContext.Songs.Any(e => e.ident == song.ident);
-            if (songExist == true){
-                return Ok(new { Message = "Song already created!" });                    
-            }
+            Song song = new Song(dto);
             _dbContext.Add(song);
             _dbContext.SaveChanges();
-            return Ok(new { Message = "Song created!" });
+            return Ok(new { Message = "Song created!", song});
         }catch(Exception e){
             if (e is KeyNotFoundException){
                 return NotFound(new {Message = e.Message});
@@ -69,12 +70,14 @@ public class SongController : ControllerBase
 
     [HttpPut("{id}")]
     [ActionName("UpdateData")]
+    [SwaggerResponse(Status200OK)]
+    [SwaggerResponse(Status404NotFound)]
     public IActionResult Update([FromBody] Song song){
         try{   
             _dbContext.Songs.Attach(song);
             _dbContext.Entry(song).State = EntityState.Modified;        
             _dbContext.SaveChanges();
-            return Ok(new { Message = "Song updated!" });
+            return Ok(new { Message = "Song updated!", song});
         }catch{
             return NotFound(new {Message = "Song NOT updated!"});
         }
@@ -82,6 +85,8 @@ public class SongController : ControllerBase
 
     [HttpDelete("{id}")]
     [ActionName("DeleteData")]
+    [SwaggerResponse(Status200OK)]
+    [SwaggerResponse(Status404NotFound)]
     public IActionResult Delete(int id){
         try{
             var song = _dbContext.Songs.Find(id);

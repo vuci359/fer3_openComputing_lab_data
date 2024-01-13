@@ -1,15 +1,33 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-//using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Authorization;
 using Newtonsoft.Json;
 
-
+using openComputingLab.DTO;
 namespace openComputingLab.Models;
 
 [Table("Album")]
 [JsonObject("album")]
+//[Authorize]
 public class Album {
+
+    public Album(){}
+    public Album(AlbumDTO dto){
+        Bandident = dto.Bandident;
+        name = dto.name;
+        label = dto.label;
+        date_released = dto.date_released;
+    }
+
+    [NotMapped]
+    [JsonProperty("@context")]
+    public AlbumContext  @context {
+        get;
+        set;
+    } = new AlbumContext();
+
    // [JsonIgnore]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Key, Required]
     public int ident {
         get;

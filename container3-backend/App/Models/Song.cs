@@ -1,15 +1,36 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
 using Newtonsoft.Json;
 
-
+using openComputingLab.DTO;
 namespace openComputingLab.Models;
 
 [Table("Song")]
 [JsonObject("song")]
+//[Authorize]
 public class Song {
+    public Song(){}
+    public Song(SongDTO dto){
+        Albumident = dto.Albumident;
+        name = dto.name;
+        length = dto.length;
+        no_on_album = dto.no_on_album;
+        lyrics_writers = dto.lyrics_writers;
+        music_writers = dto.music_writers;
+        lyrics = dto.lyrics;
+    }
+
+    [NotMapped]
+    [JsonProperty("@context")]
+    public SongContext @context{
+        get;
+        set;
+    } = new SongContext();
 
   //  [JsonIgnore]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Key, Required]
     public int ident {
         get;
